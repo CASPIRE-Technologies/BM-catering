@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useQuotation } from "@/lib/cart-context";
+import { useLanguage } from "@/lib/language-context";
 import { formatCurrency } from "@/lib/utils";
 import { X, Trash2, ShoppingBag, ArrowRight } from "lucide-react";
 
@@ -14,6 +15,7 @@ interface QuotationDrawerProps {
 
 export function QuotationDrawer({ isOpen, onClose }: QuotationDrawerProps) {
   const { items, removeItem, updateQuantity, clearItems, totalRentalAmount, totalItemCount } = useQuotation();
+  const { t } = useLanguage();
 
   if (!isOpen) return null;
 
@@ -25,10 +27,10 @@ export function QuotationDrawer({ isOpen, onClose }: QuotationDrawerProps) {
           <div className="flex items-center gap-2">
             <ShoppingBag className="w-5 h-5 text-gold-400" />
             <h2 className="text-lg font-serif font-semibold text-zinc-100">
-              Quotation Request Cart
+              {t.drawer.title}
             </h2>
             <span className="text-xs bg-gold-500/20 text-gold-300 px-2 py-0.5 rounded-full font-medium">
-              {totalItemCount} items
+              {totalItemCount} {t.drawer.itemsCount}
             </span>
           </div>
           <button
@@ -44,16 +46,16 @@ export function QuotationDrawer({ isOpen, onClose }: QuotationDrawerProps) {
           {items.length === 0 ? (
             <div className="text-center py-12 text-zinc-400 space-y-3">
               <ShoppingBag className="w-12 h-12 mx-auto text-zinc-600 opacity-40" />
-              <p className="font-medium text-zinc-300">Your quotation list is empty</p>
+              <p className="font-medium text-zinc-300">{t.drawer.emptyTitle}</p>
               <p className="text-sm text-zinc-500">
-                Browse our rental catalogue to add chairs, marquees, tables, and lighting for your event.
+                {t.drawer.emptyDesc}
               </p>
               <Link
                 href="/rentals"
                 onClick={onClose}
                 className="inline-block mt-3 text-xs uppercase tracking-wider text-gold-400 hover:text-gold-300 font-semibold border-b border-gold-400 pb-0.5"
               >
-                Browse Equipment Rentals →
+                {t.drawer.browseBtn}
               </Link>
             </div>
           ) : (
@@ -73,7 +75,7 @@ export function QuotationDrawer({ isOpen, onClose }: QuotationDrawerProps) {
                 <div className="flex-1 min-w-0">
                   <h4 className="text-sm font-medium text-zinc-100 truncate">{item.name}</h4>
                   <p className="text-xs text-gold-400 font-medium">
-                    {formatCurrency(item.rentalPrice)} / day
+                    {formatCurrency(item.rentalPrice)} {t.rentalsPage.pricingUnit}
                   </p>
                   <div className="flex items-center gap-2 mt-2">
                     <button
@@ -112,27 +114,24 @@ export function QuotationDrawer({ isOpen, onClose }: QuotationDrawerProps) {
         {items.length > 0 && (
           <div className="p-5 border-t border-zinc-800 bg-zinc-900/70 space-y-3">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-zinc-400">Estimated Rental (1 Day)</span>
+              <span className="text-zinc-400">{t.drawer.totalEstimate}</span>
               <span className="text-base font-semibold text-gold-300 font-serif">
                 {formatCurrency(totalRentalAmount)}
               </span>
             </div>
-            <p className="text-xs text-zinc-500 leading-tight">
-              * Final quote includes delivery, setup, and multi-day discounts verified by B.M Catering.
-            </p>
             <div className="flex gap-2 pt-1">
               <button
                 onClick={clearItems}
                 className="px-3 py-2.5 text-xs text-zinc-400 hover:text-zinc-200 rounded-lg border border-zinc-800 hover:bg-zinc-800 transition"
               >
-                Clear
+                {t.drawer.clearAll}
               </button>
               <Link
                 href="/book"
                 onClick={onClose}
                 className="flex-1 bg-gold-gradient text-zinc-950 font-semibold py-2.5 px-4 rounded-lg flex items-center justify-center gap-2 hover:brightness-110 transition shadow-gold text-sm"
               >
-                <span>Request Formal Quote</span>
+                <span>{t.drawer.proceedBtn}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

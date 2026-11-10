@@ -64,7 +64,7 @@ export default function AdminDashboardPage() {
 
   const { summary, upcomingEvents, lowStockItems, revenueTrend, categoryDistribution } = data;
 
-  const COLORS = ["#D4AF37", "#BA9566", "#38BDF8"];
+  const COLORS = ["#A6B9BE", "#D8D2C6", "#38BDF8"];
 
   return (
     <div className="space-y-8">
@@ -229,9 +229,9 @@ export default function AdminDashboardPage() {
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={revenueTrend} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                 <defs>
-                  <linearGradient id="goldGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#C8A127" stopOpacity={0.4} />
-                    <stop offset="95%" stopColor="#C8A127" stopOpacity={0.0} />
+                  <linearGradient id="themeGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#A6B9BE" stopOpacity={0.4} />
+                    <stop offset="95%" stopColor="#A6B9BE" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
@@ -247,7 +247,7 @@ export default function AdminDashboardPage() {
                     backgroundColor: "#18181b",
                     borderColor: "#3f3f46",
                     borderRadius: "12px",
-                    color: "#f4eedb",
+                    color: "#D8D2C6",
                     fontSize: "12px",
                   }}
                   formatter={(val: any) => [formatCurrency(val), "Revenue"]}
@@ -255,10 +255,10 @@ export default function AdminDashboardPage() {
                 <Area
                   type="monotone"
                   dataKey="total"
-                  stroke="#C8A127"
+                  stroke="#A6B9BE"
                   strokeWidth={2}
                   fillOpacity={1}
-                  fill="url(#goldGradient)"
+                  fill="url(#themeGradient)"
                 />
               </AreaChart>
             </ResponsiveContainer>
@@ -295,7 +295,7 @@ export default function AdminDashboardPage() {
                     backgroundColor: "#18181b",
                     borderColor: "#3f3f46",
                     borderRadius: "12px",
-                    color: "#f4eedb",
+                    color: "#D8D2C6",
                     fontSize: "12px",
                   }}
                   formatter={(val: any) => [formatCurrency(val), "Revenue"]}

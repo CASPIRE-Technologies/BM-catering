@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useQuotation } from "@/lib/cart-context";
+import { useLanguage } from "@/lib/language-context";
 import { QuotationDrawer } from "@/components/public/QuotationDrawer";
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import {
-  UtensilsCrossed,
   ShoppingBag,
   Menu,
   X,
@@ -20,6 +21,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { totalItemCount } = useQuotation();
+  const { t } = useLanguage();
 
   const isAdminSection = pathname.startsWith("/admin");
   if (isAdminSection) {
@@ -28,12 +30,12 @@ export function Navbar() {
   }
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
-    { href: "/rentals", label: "Rental Catalogue" },
-    { href: "/gallery", label: "Gallery" },
-    { href: "/book", label: "Booking Enquiry" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: t.nav.home },
+    { href: "/services", label: t.nav.services },
+    { href: "/rentals", label: t.nav.rentals },
+    { href: "/gallery", label: t.nav.gallery },
+    { href: "/book", label: t.nav.book },
+    { href: "/contact", label: t.nav.contact },
   ];
 
   return (
@@ -43,7 +45,7 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-2">
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Now taking reservations for upcoming wedding & festival seasons across Sri Lanka</span>
+            <span>{t.topBanner}</span>
           </div>
           <div className="hidden sm:flex items-center gap-6">
             <a
@@ -51,14 +53,14 @@ export function Navbar() {
               className="flex items-center gap-1.5 hover:text-gold-400 transition"
             >
               <Phone className="w-3.5 h-3.5 text-gold-500" />
-              <span>+94 77 123 4567</span>
+              <span>{t.phone}</span>
             </a>
             <Link
               href="/admin/login"
               className="flex items-center gap-1 text-zinc-500 hover:text-zinc-300 transition"
             >
               <Lock className="w-3 h-3" />
-              <span>Staff Portal</span>
+              <span>{t.staffPortal}</span>
             </Link>
           </div>
         </div>
@@ -69,26 +71,15 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-gold-400 to-amber-700 p-0.5 shadow-gold">
-              <div className="w-full h-full bg-zinc-950 rounded-[10px] flex items-center justify-center">
-                <UtensilsCrossed className="w-5 h-5 text-gold-400 group-hover:scale-110 transition duration-300" />
-              </div>
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-serif text-xl sm:text-2xl font-bold tracking-wider text-zinc-100 group-hover:text-gold-300 transition">
-                  B.M CATERING
-                </span>
-                <Sparkles className="w-3.5 h-3.5 text-gold-400" />
-              </div>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-gold-500/80 font-medium -mt-0.5">
-                Luxury Events • Rentals • Decor
-              </p>
-            </div>
+            <img
+              src="/images/bm-cook-catering-logo.png"
+              alt="B.M Cook & Catering"
+              className="w-[190px] sm:w-[230px] h-auto object-contain group-hover:brightness-125 transition"
+            />
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -103,7 +94,7 @@ export function Navbar() {
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-gold-400 to-amber-600 rounded-full" />
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#A6B9BE] to-[#D8D2C6] rounded-full" />
                   )}
                 </Link>
               );
@@ -111,7 +102,10 @@ export function Navbar() {
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            {/* Language Switcher */}
+            <LanguageSwitcher />
+
             {/* Quotation Cart Button */}
             <button
               onClick={() => setDrawerOpen(true)}
@@ -119,7 +113,7 @@ export function Navbar() {
               aria-label="View Quotation Request Cart"
             >
               <ShoppingBag className="w-5 h-5 text-gold-400 group-hover:scale-105 transition" />
-              <span className="hidden sm:inline text-xs font-medium">Rental Quote</span>
+              <span className="hidden sm:inline text-xs font-medium">{t.nav.quoteBtn}</span>
               {totalItemCount > 0 && (
                 <span className="w-5 h-5 rounded-full bg-gold-gradient text-zinc-950 font-bold text-xs flex items-center justify-center animate-bounce">
                   {totalItemCount}
@@ -130,9 +124,9 @@ export function Navbar() {
             {/* Book Now Button */}
             <Link
               href="/book"
-              className="hidden md:inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider bg-gold-gradient text-zinc-950 hover:brightness-110 shadow-gold transition duration-200"
+              className="hidden md:inline-flex items-center justify-center px-4 sm:px-5 py-2.5 rounded-xl text-xs font-semibold uppercase tracking-wider bg-gold-gradient text-zinc-950 hover:brightness-110 shadow-gold transition duration-200"
             >
-              Book Event
+              {t.nav.bookBtn}
             </Link>
 
             {/* Mobile Menu Toggle */}
@@ -149,6 +143,10 @@ export function Navbar() {
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div className="lg:hidden border-b border-zinc-800 bg-zinc-950 px-4 pt-3 pb-6 space-y-3">
+            <div className="flex items-center justify-between pb-2 border-b border-zinc-900">
+              <span className="text-xs text-zinc-400 font-medium">Language / භාෂාව:</span>
+              <LanguageSwitcher />
+            </div>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -169,14 +167,14 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-3 text-center rounded-xl bg-gold-gradient text-zinc-950 font-bold text-sm uppercase tracking-wider"
               >
-                Request Event Quotation
+                {t.nav.bookBtn}
               </Link>
               <Link
                 href="/admin/login"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-2.5 text-center rounded-xl bg-zinc-900 text-zinc-400 text-xs font-medium border border-zinc-800"
               >
-                Staff Portal Login
+                {t.staffPortal}
               </Link>
             </div>
           </div>

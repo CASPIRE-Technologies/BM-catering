@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useQuotation } from "@/lib/cart-context";
+import { useLanguage } from "@/lib/language-context";
 import { formatCurrency } from "@/lib/utils";
 import {
   Calendar,
@@ -23,6 +24,7 @@ import {
 
 export function BookingEnquiryForm({ availableItems }: { availableItems: any[] }) {
   const { items, clearItems, startDate: contextStart, endDate: contextEnd } = useQuotation();
+  const { t } = useLanguage();
 
   const [formData, setFormData] = useState({
     customerName: "",
@@ -259,7 +261,7 @@ export function BookingEnquiryForm({ availableItems }: { availableItems: any[] }
           </div>
           <div>
             <h3 className="text-lg font-serif font-bold text-zinc-100">
-              1. Customer Information
+              {t.bookPage.sec1}
             </h3>
             <p className="text-xs text-zinc-400">
               Please provide your direct contact details for quotation delivery.
@@ -336,7 +338,7 @@ export function BookingEnquiryForm({ availableItems }: { availableItems: any[] }
           </div>
           <div>
             <h3 className="text-lg font-serif font-bold text-zinc-100">
-              2. Event Schedule & Location
+              {t.bookPage.sec2}
             </h3>
             <p className="text-xs text-zinc-400">
               Dates help us calculate warehouse equipment availability.
@@ -436,7 +438,7 @@ export function BookingEnquiryForm({ availableItems }: { availableItems: any[] }
           </div>
           <div>
             <h3 className="text-lg font-serif font-bold text-zinc-100">
-              3. Required Service Categories
+              {t.bookPage.sec3}
             </h3>
             <p className="text-xs text-zinc-400">
               Select all services you require for this booking.
@@ -652,7 +654,7 @@ export function BookingEnquiryForm({ availableItems }: { availableItems: any[] }
             <span className="animate-spin w-5 h-5 border-2 border-black border-t-transparent rounded-full" />
           ) : (
             <>
-              <span>Submit Formal Booking Enquiry</span>
+              <span>{t.bookPage.submitBtn}</span>
               <ArrowRight className="w-4 h-4" />
             </>
           )}

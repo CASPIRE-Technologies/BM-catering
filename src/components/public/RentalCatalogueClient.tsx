@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useQuotation } from "@/lib/cart-context";
+import { useLanguage } from "@/lib/language-context";
 import { formatCurrency } from "@/lib/utils";
 import {
   Calendar,
@@ -51,6 +52,7 @@ export function RentalCatalogueClient({
   categories: Category[];
 }) {
   const { addItem, startDate, endDate, setDateRange } = useQuotation();
+  const { t } = useLanguage();
 
   const [items, setItems] = useState<RentalItem[]>(initialItems);
   const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
@@ -135,7 +137,31 @@ export function RentalCatalogueClient({
   });
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
+      {/* Header Banner */}
+      <section className="relative -mt-12 py-14 bg-zinc-950 border-b border-zinc-900 overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/real/PHOTO-2026-11-04-21-37-41.jpg"
+            alt="B.M Catering Rental Inventory"
+            fill
+            className="object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+          <span className="text-gold-400 text-xs uppercase tracking-[0.2em] font-semibold">
+            {t.rentalsPage.kicker}
+          </span>
+          <h1 className="text-4xl sm:text-6xl font-serif font-bold text-white tracking-tight">
+            {t.rentalsPage.title}
+          </h1>
+          <p className="text-zinc-400 max-w-2xl mx-auto text-sm sm:text-base">
+            {t.rentalsPage.subtitle}
+          </p>
+        </div>
+      </section>
+
       {/* 1. Date Range Availability Tool Banner */}
       <div className="rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-900/90 to-zinc-950 border border-gold-500/30 p-6 sm:p-8 shadow-2xl">
         <div className="max-w-4xl mx-auto space-y-4">
@@ -143,7 +169,7 @@ export function RentalCatalogueClient({
             <div>
               <h3 className="font-serif text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
                 <Calendar className="w-5 h-5 text-gold-400" />
-                <span>Check Live Date-Based Availability</span>
+                <span>{t.rentalsPage.selectedDates}</span>
               </h3>
               <p className="text-xs sm:text-sm text-zinc-400 mt-1">
                 Select your event dates to see exact available warehouse stock and prevent double booking.
@@ -159,7 +185,7 @@ export function RentalCatalogueClient({
           <form onSubmit={handleCheckDates} className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
             <div>
               <label className="block text-xs font-medium text-zinc-300 mb-1">
-                Event Start Date:
+                {t.rentalsPage.startDate}:
               </label>
               <input
                 type="date"
@@ -172,7 +198,7 @@ export function RentalCatalogueClient({
             </div>
             <div>
               <label className="block text-xs font-medium text-zinc-300 mb-1">
-                Event End Date:
+                {t.rentalsPage.endDate}:
               </label>
               <input
                 type="date"
@@ -215,7 +241,7 @@ export function RentalCatalogueClient({
                 : "bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800"
             }`}
           >
-            All Categories ({items.length})
+            {t.rentalsPage.allCategory} ({items.length})
           </button>
           {categories.map((cat) => (
             <button
@@ -237,7 +263,7 @@ export function RentalCatalogueClient({
           <Search className="w-4 h-4 absolute left-3.5 top-3 text-zinc-500" />
           <input
             type="text"
-            placeholder="Search chairs, tents, warmers..."
+            placeholder={t.rentalsPage.searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full bg-zinc-900/80 border border-zinc-800 rounded-xl pl-10 pr-4 py-2 text-xs text-zinc-200 placeholder:text-zinc-500 focus:outline-none focus:border-gold-400"
@@ -249,10 +275,7 @@ export function RentalCatalogueClient({
       {filteredItems.length === 0 ? (
         <div className="text-center py-20 bg-zinc-900/20 rounded-2xl border border-zinc-800/80 space-y-3">
           <AlertCircle className="w-10 h-10 text-zinc-600 mx-auto" />
-          <h4 className="text-lg font-serif font-semibold text-zinc-200">No items match your criteria</h4>
-          <p className="text-xs text-zinc-400 max-w-sm mx-auto">
-            Try adjusting your category filter, clearing your search query, or choosing different dates.
-          </p>
+          <h4 className="text-lg font-serif font-semibold text-zinc-200">{t.rentalsPage.noResults}</h4>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -363,14 +386,14 @@ export function RentalCatalogueClient({
                       {isAdded ? (
                         <>
                           <Check className="w-4 h-4" />
-                          <span>Added to Quote!</span>
+                          <span>{t.featuredRentals.added}!</span>
                         </>
                       ) : isOutOfStock ? (
-                        <span>Unavailable for Dates</span>
+                        <span>{t.rentalsPage.outOfStock}</span>
                       ) : (
                         <>
                           <Plus className="w-3.5 h-3.5" />
-                          <span>Add to Quote</span>
+                          <span>{t.featuredRentals.addToCart}</span>
                         </>
                       )}
                     </button>

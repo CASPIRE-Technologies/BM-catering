@@ -3,6 +3,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { QuotationProvider } from "@/lib/cart-context";
+import { LanguageProvider } from "@/lib/language-context";
 import { WhatsAppFloatingButton } from "@/components/public/WhatsAppFloatingButton";
 
 export const metadata: Metadata = {
@@ -27,13 +28,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth">
-      <body className="min-h-screen flex flex-col bg-[#09090b] text-[#f4eedb] antialiased selection:bg-gold-500 selection:text-black">
-        <QuotationProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <WhatsAppFloatingButton />
-        </QuotationProvider>
+      <body className="min-h-screen flex flex-col bg-[#09090b] text-[#D8D2C6] antialiased selection:bg-[#A6B9BE] selection:text-black">
+        <LanguageProvider>
+          <QuotationProvider>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <WhatsAppFloatingButton />
+          </QuotationProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

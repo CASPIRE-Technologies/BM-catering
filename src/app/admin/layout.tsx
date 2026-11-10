@@ -15,7 +15,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   }
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-[#f4eedb]">
+    <div className="min-h-screen bg-[#09090b] text-[#D8D2C6]">
       {/* Sidebar */}
       <AdminSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 

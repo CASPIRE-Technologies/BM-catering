@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useLanguage } from "@/lib/language-context";
 import { X, ChevronLeft, ChevronRight, Maximize2, Sparkles } from "lucide-react";
 
 interface GalleryItem {
@@ -16,6 +17,16 @@ interface GalleryItem {
 export function GalleryClient({ initialImages }: { initialImages: GalleryItem[] }) {
   const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
+  const { t } = useLanguage();
+
+  const categoryLabels: Record<string, string> = {
+    ALL: t.galleryPage.all,
+    CATERING: t.galleryPage.buffets,
+    EQUIPMENT: t.galleryPage.rentals,
+    LIGHTING: t.galleryPage.lighting,
+    WEDDINGS: t.galleryPage.weddings,
+    CORPORATE: t.galleryPage.corporate,
+  };
 
   const categories = ["ALL", "CATERING", "EQUIPMENT", "LIGHTING", "WEDDINGS", "CORPORATE"];
 
@@ -53,7 +64,7 @@ export function GalleryClient({ initialImages }: { initialImages: GalleryItem[] 
                 : "bg-zinc-900 text-zinc-400 hover:text-white border border-zinc-800"
             }`}
           >
-            {cat === "ALL" ? "All Moments" : cat}
+            {categoryLabels[cat] || cat}
           </button>
         ))}
       </div>

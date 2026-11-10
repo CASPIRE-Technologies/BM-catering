@@ -3,8 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "@/lib/language-context";
 import {
-  UtensilsCrossed,
   Phone,
   Mail,
   MapPin,
@@ -16,6 +16,7 @@ import {
 
 export function Footer() {
   const pathname = usePathname();
+  const { t } = useLanguage();
   if (pathname.startsWith("/admin")) return null;
 
   return (
@@ -27,27 +28,19 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Col 1: Brand & Bio */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 to-amber-700 p-0.5">
-                <div className="w-full h-full bg-zinc-950 rounded-[10px] flex items-center justify-center">
-                  <UtensilsCrossed className="w-5 h-5 text-gold-400" />
-                </div>
-              </div>
-              <div>
-                <span className="font-serif text-xl font-bold tracking-wider text-zinc-100">
-                  B.M CATERING
-                </span>
-                <p className="text-[10px] uppercase tracking-[0.2em] text-gold-500">
-                  Luxury Events & Rentals
-                </p>
-              </div>
+            <Link href="/" className="inline-block">
+              <img
+                src="/images/bm-cook-catering-logo.png"
+                alt="B.M Cook & Catering"
+                className="w-[230px] h-auto object-contain"
+              />
             </Link>
             <p className="text-sm text-zinc-400 leading-relaxed">
-              Sri Lanka&apos;s premier event partner offering gourmet banquet catering, luxury marquees, furniture rentals, and enchanting lighting design for memorable occasions.
+              {t.footer.bio}
             </p>
             <div className="flex items-center gap-2 text-xs text-gold-400/90 pt-1">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              <span>100% Halal Certified • Registered Sri Lankan Business</span>
+              <span>{t.footer.halalCert}</span>
             </div>
           </div>
 
@@ -55,36 +48,36 @@ export function Footer() {
           <div>
             <h3 className="font-serif text-base font-semibold text-zinc-100 mb-4 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-gold-400" />
-              Our Core Services
+              {t.footer.coreServices}
             </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
                 <Link href="/services#catering" className="hover:text-gold-300 transition flex items-center justify-between group">
-                  <span>Banquet & Wedding Catering</span>
+                  <span>{t.footer.service1}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition" />
                 </Link>
               </li>
               <li>
                 <Link href="/services#rentals" className="hover:text-gold-300 transition flex items-center justify-between group">
-                  <span>Marquee, Chair & Stage Rentals</span>
+                  <span>{t.footer.service2}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition" />
                 </Link>
               </li>
               <li>
                 <Link href="/services#lighting" className="hover:text-gold-300 transition flex items-center justify-between group">
-                  <span>Fairy Lights & Stage Illumination</span>
+                  <span>{t.footer.service3}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition" />
                 </Link>
               </li>
               <li>
                 <Link href="/rentals" className="hover:text-gold-300 transition flex items-center justify-between group">
-                  <span>Equipment Rental Catalogue</span>
+                  <span>{t.footer.service4}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition" />
                 </Link>
               </li>
               <li>
                 <Link href="/services#cultural" className="hover:text-gold-300 transition flex items-center justify-between group">
-                  <span>Traditional Festivals & Feasts</span>
+                  <span>{t.footer.service5}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition" />
                 </Link>
               </li>
@@ -94,27 +87,32 @@ export function Footer() {
           {/* Col 3: Quick Navigation */}
           <div>
             <h3 className="font-serif text-base font-semibold text-zinc-100 mb-4">
-              Quick Links
+              {t.footer.quickLinks}
             </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
+                <Link href="/" className="hover:text-gold-300 transition">
+                  {t.footer.linkHome}
+                </Link>
+              </li>
+              <li>
                 <Link href="/book" className="hover:text-gold-300 transition">
-                  Book an Event Online
+                  {t.footer.linkBook}
                 </Link>
               </li>
               <li>
                 <Link href="/gallery" className="hover:text-gold-300 transition">
-                  Completed Event Gallery
+                  {t.footer.linkGallery}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-gold-300 transition">
-                  Contact & Office Location
+                  {t.footer.linkContact}
                 </Link>
               </li>
               <li>
                 <Link href="/admin/login" className="hover:text-gold-300 transition">
-                  Management Dashboard Login
+                  {t.footer.linkStaff}
                 </Link>
               </li>
             </ul>
@@ -123,7 +121,7 @@ export function Footer() {
           {/* Col 4: Contact Information */}
           <div className="space-y-3">
             <h3 className="font-serif text-base font-semibold text-zinc-100 mb-4">
-              Get in Touch
+              {t.footer.contactInfo}
             </h3>
             <div className="flex items-start gap-3 text-sm">
               <MapPin className="w-4 h-4 text-gold-400 mt-1 shrink-0" />
@@ -150,11 +148,10 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 pt-6 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
-          <p>© {new Date().getFullYear()} B.M Catering & Events Service. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} B.M Catering & Events Service. {t.footer.rights}</p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-zinc-400">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-zinc-400">Rental Terms</Link>
-            <Link href="/admin/login" className="text-gold-500/80 hover:text-gold-400">Admin Login</Link>
+            <Link href="/contact" className="hover:text-zinc-400">Help & Support</Link>
+            <Link href="/admin/login" className="text-gold-500/80 hover:text-gold-400">{t.staffPortal}</Link>
           </div>
         </div>
       </div>

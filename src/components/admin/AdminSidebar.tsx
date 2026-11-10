@@ -64,15 +64,12 @@ export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
         {/* Brand Header */}
         <div className="p-5 border-b border-zinc-800/80 flex items-center justify-between">
           <Link href="/admin" className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-gold-400 to-amber-700 p-0.5 shadow-gold">
-              <div className="w-full h-full bg-zinc-950 rounded-[10px] flex items-center justify-center">
-                <UtensilsCrossed className="w-4 h-4 text-gold-400" />
-              </div>
-            </div>
             <div>
-              <span className="font-serif text-base font-bold text-zinc-100 tracking-wider">
-                B.M CATERING
-              </span>
+              <img
+                src="/images/bm-cook-catering-logo.png"
+                alt="B.M Cook & Catering"
+                className="w-[150px] h-auto object-contain"
+              />
               <p className="text-[9px] uppercase tracking-[0.2em] text-gold-500 font-semibold">
                 Admin Console
               </p>

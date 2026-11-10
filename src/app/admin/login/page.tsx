@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { UtensilsCrossed, Lock, Mail, ArrowRight, ShieldCheck, AlertCircle } from "lucide-react";
+import { Lock, Mail, ArrowRight, ShieldCheck, AlertCircle } from "lucide-react";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -50,15 +50,12 @@ export default function AdminLoginPage() {
       <div className="relative z-10 w-full max-w-md bg-zinc-950 border border-zinc-800 rounded-3xl p-8 sm:p-10 shadow-2xl space-y-8">
         {/* Logo */}
         <div className="text-center space-y-3">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-gold-400 to-amber-700 p-0.5 mx-auto shadow-gold">
-            <div className="w-full h-full bg-zinc-950 rounded-[14px] flex items-center justify-center">
-              <UtensilsCrossed className="w-7 h-7 text-gold-400" />
-            </div>
-          </div>
+          <img
+            src="/images/bm-cook-catering-logo.png"
+            alt="B.M Cook & Catering"
+            className="w-full max-w-[290px] h-auto object-contain mx-auto"
+          />
           <div>
-            <h1 className="font-serif text-2xl font-bold text-white tracking-wide">
-              B.M CATERING
-            </h1>
             <p className="text-xs uppercase tracking-[0.2em] text-gold-500 font-semibold mt-0.5">
               Secure Management Portal
             </p>
