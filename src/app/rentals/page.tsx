@@ -9,17 +9,20 @@ export const metadata = {
 };
 
 export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default async function RentalsPage() {
-  const items = await prisma.inventoryItem.findMany({
+  const databaseConfigured = Boolean(process.env.DATABASE_URL);
+
+  const items = databaseConfigured ? await prisma.inventoryItem.findMany({
     where: { status: { not: "RETIRED" } },
     include: { category: true },
     orderBy: { name: "asc" },
-  });
+  }) : [];
 
-  const categories = await prisma.inventoryCategory.findMany({
+  const categories = databaseConfigured ? await prisma.inventoryCategory.findMany({
     orderBy: { name: "asc" },
-  });
+  }) : [];
 
   const serializedItems = items.map((i) => ({
     id: i.id,

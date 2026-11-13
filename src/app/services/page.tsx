@@ -8,22 +8,25 @@ export const metadata = {
 };
 
 export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default async function ServicesPage() {
-  const cateringServices = await prisma.service.findMany({
+  const databaseConfigured = Boolean(process.env.DATABASE_URL);
+
+  const cateringServices = databaseConfigured ? await prisma.service.findMany({
     where: { category: { slug: "catering" } },
     orderBy: { sortOrder: "asc" },
-  });
+  }) : [];
 
-  const rentalServices = await prisma.service.findMany({
+  const rentalServices = databaseConfigured ? await prisma.service.findMany({
     where: { category: { slug: "equipment-rentals" } },
     orderBy: { sortOrder: "asc" },
-  });
+  }) : [];
 
-  const lightingServices = await prisma.service.findMany({
+  const lightingServices = databaseConfigured ? await prisma.service.findMany({
     where: { category: { slug: "lighting-decorations" } },
     orderBy: { sortOrder: "asc" },
-  });
+  }) : [];
 
   // Serialize prices
   const serializedCatering = cateringServices.map((s) => ({

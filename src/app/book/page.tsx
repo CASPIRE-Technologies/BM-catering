@@ -9,9 +9,10 @@ export const metadata = {
 };
 
 export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default async function BookPage() {
-  const items = await prisma.inventoryItem.findMany({
+  const items = process.env.DATABASE_URL ? await prisma.inventoryItem.findMany({
     where: { status: "AVAILABLE" },
     select: {
       id: true,
@@ -22,7 +23,7 @@ export default async function BookPage() {
       category: { select: { name: true } },
     },
     orderBy: { name: "asc" },
-  });
+  }) : [];
 
   const serializedItems = items.map((i) => ({
     ...i,

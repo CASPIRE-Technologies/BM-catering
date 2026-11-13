@@ -9,11 +9,12 @@ export const metadata = {
 };
 
 export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default async function GalleryPage() {
-  const images = await prisma.galleryImage.findMany({
+  const images = process.env.DATABASE_URL ? await prisma.galleryImage.findMany({
     orderBy: [{ featured: "desc" }, { sortOrder: "asc" }, { createdAt: "desc" }],
-  });
+  }) : [];
 
   return (
     <div className="space-y-12 py-12">
