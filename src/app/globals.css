@@ -158,6 +158,79 @@ body {
 .site-light .border-zinc-700 {
   border-color: #E3DCCC !important;
 }
+
+/* Admin Dashboard theme overrides - ensure high-contrast readability against the warm linen background */
+.admin-shell {
+  background-color: #FBF7ED !important;
+  color: #14291F !important;
+}
+
+.admin-shell h1,
+.admin-shell h2,
+.admin-shell h3,
+.admin-shell h4,
+.admin-shell .text-white {
+  color: #14291F !important;
+}
+
+.admin-shell .text-zinc-400,
+.admin-shell .text-zinc-500 {
+  color: #4A6356 !important;
+}
+
+.admin-shell .text-zinc-300,
+.admin-shell .text-zinc-200,
+.admin-shell .text-zinc-100 {
+  color: #14291F !important;
+}
+
+.admin-shell [class*="bg-zinc-900/"],
+.admin-shell .bg-zinc-900 {
+  background-color: #FFFFFF !important;
+  border-color: rgba(20, 41, 31, 0.12) !important;
+}
+
+.admin-shell header {
+  background-color: rgba(251, 247, 237, 0.9) !important;
+  border-color: rgba(20, 41, 31, 0.12) !important;
+}
+
+.admin-shell header .text-white,
+.admin-shell header .text-zinc-200 {
+  color: #14291F !important;
+}
+
+.admin-shell header .text-zinc-400 {
+  color: #4A6356 !important;
+}
+
+.admin-shell aside {
+  background-color: #0E6049 !important;
+  border-color: rgba(20, 41, 31, 0.15) !important;
+}
+
+.admin-shell aside .text-zinc-400,
+.admin-shell aside .text-zinc-500 {
+  color: #D3E5DC !important;
+}
+
+.admin-shell aside .hover\:text-zinc-200:hover,
+.admin-shell aside .hover\:text-white:hover {
+  color: #FFFFFF !important;
+}
+
+.admin-shell aside .hover\:bg-zinc-900:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.admin-shell aside .border-zinc-800,
+.admin-shell aside .border-zinc-800\/80 {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.admin-shell aside .bg-zinc-950\/60 {
+  background-color: rgba(10, 70, 53, 0.7) !important;
+}
 .site-light input,
 .site-light textarea,
 .site-light select,
