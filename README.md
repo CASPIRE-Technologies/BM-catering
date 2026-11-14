@@ -12,7 +12,7 @@ A modern, production-grade full-stack web application built for **B.M Catering**
 - **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS with custom luxury color palette (Obsidian, Champagne Gold, Ivory)
-- **Database**: PostgreSQL
+- **Database**: MongoDB (via Prisma)
 - **ORM**: Prisma ORM
 - **Authentication**: JWT & Cookie-based admin authentication
 - **Analytics & Charts**: Recharts
@@ -67,7 +67,7 @@ A modern, production-grade full-stack web application built for **B.M Catering**
 2. **Configure environment variables**:
    Create or verify `.env`:
    ```env
-   DATABASE_URL="postgresql://username:password@localhost:5432/bm_catering?schema=public"
+   DATABASE_URL="mongodb+srv://username:password@cluster.mongodb.net/bm_catering?retryWrites=true&w=majority"
    JWT_SECRET="your-jwt-secret-key"
    ADMIN_EMAIL="admin@bmcatering.lk"
    ADMIN_PASSWORD="adminpassword123"
@@ -81,6 +81,8 @@ A modern, production-grade full-stack web application built for **B.M Catering**
    npx prisma db push
    node prisma/seed.js
    ```
+
+   MongoDB uses Prisma's schema push workflow; Prisma migrations are not supported for MongoDB.
 
 4. **Start the development server**:
    ```bash
