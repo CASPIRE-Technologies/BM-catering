@@ -31,88 +31,93 @@ export function HomeClient({ services, featuredRentals, galleryImages }: HomeCli
   return (
     <div className="site-light space-y-24 pb-20">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-12 pb-20">
-        <div className="absolute inset-0 z-0">
+      <section className="relative min-h-[calc(100vh-142px)] flex items-center overflow-hidden bg-[#FBF7ED] pt-16 pb-20">
+        <div className="absolute right-[-8%] top-[8%] w-[58vw] h-[58vw] max-w-[780px] max-h-[780px] rounded-full bg-[#F9E9B5]/70" />
+        <div className="absolute right-[8%] top-[14%] w-[42vw] h-[42vw] max-w-[570px] max-h-[570px] rounded-full border-[18px] border-[#F6D879] shadow-[0_30px_80px_rgba(126,91,35,0.18)] overflow-hidden">
           <Image
             src="/images/catering-hero.png"
             alt="Elegant catered wedding banquet with plated dishes and warm evening lighting"
             fill
             priority
-            className="object-cover brightness-[0.5] scale-105 transition-transform duration-10000"
+            className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#09090b]/90 via-[#09090b]/35 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#09090b]/55 via-transparent to-[#09090b]/30" />
+        </div>
+        <div className="absolute right-[12%] bottom-[12%] w-40 h-20 rounded-2xl rotate-6 bg-white/95 shadow-xl border border-[#E8DFCE] p-4 hidden md:block">
+          <p className="text-sm font-bold text-[#14291F]">✨ Your day, your way</p>
+          <p className="text-xs text-[#5E6C63] mt-1">Events across Sri Lanka</p>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+        <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl text-left space-y-7">
           {/* Trust Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-300 text-xs sm:text-sm font-medium tracking-wide backdrop-blur-md">
-            <Sparkles className="w-4 h-4 text-gold-400" />
+          <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-[#DCEFE3] text-[#0E6049] text-sm font-bold tracking-wide">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#F4775D]" />
             <span>{t.hero.trustBadge}</span>
           </div>
 
           {/* Main Title */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-extrabold tracking-tight text-white max-w-5xl mx-auto leading-[1.2]">
-            {t.hero.titlePre} <span className="text-gold-gradient">{t.hero.titleHighlight}</span>
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-serif font-bold tracking-[-0.04em] text-[#14291F] leading-[0.95]">
+            {t.hero.titlePre} <span className="text-gold-gradient italic">{t.hero.titleHighlight}</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl text-zinc-300 max-w-3xl mx-auto font-light leading-relaxed">
+          <p className="text-lg sm:text-xl text-[#5E6C63] max-w-xl font-medium leading-relaxed">
             {t.hero.subtitle}
           </p>
 
           {/* Call to Actions */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <div className="flex flex-col sm:flex-row items-start gap-4 pt-2">
             <Link
               href="/book"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider bg-gold-gradient text-zinc-950 hover:brightness-110 shadow-gold-lg transition flex items-center justify-center gap-2 group"
+              className="w-full sm:w-auto px-8 py-4 rounded-full text-base font-bold bg-[#F4775D] text-white hover:bg-[#E96750] shadow-[0_12px_24px_rgba(244,119,93,0.24)] transition flex items-center justify-center gap-2 group"
             >
               <span>{t.hero.bookCta}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
             </Link>
             <Link
               href="/rentals"
-              className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-semibold tracking-wider bg-zinc-900/90 text-zinc-100 hover:text-gold-300 border border-zinc-700/80 hover:border-gold-500/50 backdrop-blur-md transition flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 rounded-full text-base font-semibold tracking-wide bg-white text-[#14291F] hover:bg-[#F1EBDD] border border-[#E3DCCC] transition flex items-center justify-center gap-2"
             >
-              <Tent className="w-4 h-4 text-gold-400" />
+              <Tent className="w-4 h-4 text-[#0E6049]" />
               <span>{t.hero.rentalsCta}</span>
             </Link>
           </div>
 
           {/* Key Metric Highlights */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-10 border-t border-zinc-800/80">
-            <div className="p-4 rounded-xl bg-zinc-900/40 backdrop-blur-sm border border-zinc-800">
-              <p className="text-2xl sm:text-3xl font-serif font-bold text-gold-300">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl pt-8 border-t border-[#E3DCCC]">
+            <div>
+              <p className="text-2xl sm:text-3xl font-serif font-bold text-[#0E6049]">
                 {t.hero.stats.yearsVal}
               </p>
-              <p className="text-xs text-zinc-400 uppercase tracking-wider mt-1">
+              <p className="text-xs text-[#5E6C63] uppercase tracking-wider mt-1">
                 {t.hero.stats.yearsLabel}
               </p>
             </div>
-            <div className="p-4 rounded-xl bg-zinc-900/40 backdrop-blur-sm border border-zinc-800">
-              <p className="text-2xl sm:text-3xl font-serif font-bold text-gold-300">
+            <div>
+              <p className="text-2xl sm:text-3xl font-serif font-bold text-[#0E6049]">
                 {t.hero.stats.eventsVal}
               </p>
-              <p className="text-xs text-zinc-400 uppercase tracking-wider mt-1">
+              <p className="text-xs text-[#5E6C63] uppercase tracking-wider mt-1">
                 {t.hero.stats.eventsLabel}
               </p>
             </div>
-            <div className="p-4 rounded-xl bg-zinc-900/40 backdrop-blur-sm border border-zinc-800">
-              <p className="text-2xl sm:text-3xl font-serif font-bold text-gold-300">
+            <div>
+              <p className="text-2xl sm:text-3xl font-serif font-bold text-[#0E6049]">
                 {t.hero.stats.halalVal}
               </p>
-              <p className="text-xs text-zinc-400 uppercase tracking-wider mt-1">
+              <p className="text-xs text-[#5E6C63] uppercase tracking-wider mt-1">
                 {t.hero.stats.halalLabel}
               </p>
             </div>
-            <div className="p-4 rounded-xl bg-zinc-900/40 backdrop-blur-sm border border-zinc-800">
-              <p className="text-2xl sm:text-3xl font-serif font-bold text-gold-300">
+            <div>
+              <p className="text-2xl sm:text-3xl font-serif font-bold text-[#0E6049]">
                 {t.hero.stats.quoteVal}
               </p>
-              <p className="text-xs text-zinc-400 uppercase tracking-wider mt-1">
+              <p className="text-xs text-[#5E6C63] uppercase tracking-wider mt-1">
                 {t.hero.stats.quoteLabel}
               </p>
             </div>
+          </div>
           </div>
         </div>
       </section>

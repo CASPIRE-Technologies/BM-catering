@@ -14,6 +14,7 @@ import {
   Phone,
   Sparkles,
   Lock,
+  ChefHat,
 } from "lucide-react";
 
 export function Navbar() {
@@ -41,23 +42,23 @@ export function Navbar() {
   return (
     <>
       {/* Top Banner Notice */}
-      <div className="bg-zinc-950 border-b border-zinc-900 py-1.5 px-4 text-xs text-zinc-400">
+      <div className="bg-zinc-950 border-b border-zinc-900 py-2 px-4 text-xs text-white">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span className="inline-block w-2 h-2 rounded-full bg-[#F6C64D] animate-pulse"></span>
             <span>{t.topBanner}</span>
           </div>
           <div className="hidden sm:flex items-center gap-6">
             <a
               href="tel:+94771234567"
-              className="flex items-center gap-1.5 hover:text-gold-400 transition"
+              className="flex items-center gap-1.5 hover:text-[#F6C64D] transition"
             >
-              <Phone className="w-3.5 h-3.5 text-gold-500" />
+              <Phone className="w-3.5 h-3.5 text-[#F6C64D]" />
               <span>{t.phone}</span>
             </a>
             <Link
               href="/admin/login"
-              className="flex items-center gap-1 text-zinc-500 hover:text-zinc-300 transition"
+              className="flex items-center gap-1 text-white/75 hover:text-white transition"
             >
               <Lock className="w-3 h-3" />
               <span>{t.staffPortal}</span>
@@ -67,15 +68,14 @@ export function Navbar() {
       </div>
 
       {/* Main Glass Navbar */}
-      <header className="sticky top-0 z-40 bg-zinc-950/85 backdrop-blur-md border-b border-zinc-800/80">
+      <header className="sticky top-0 z-40 bg-[#FBF7ED]/95 backdrop-blur-md border-b border-[#E3DCCC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <img
-              src="/images/bm-cook-catering-logo.png"
-              alt="B.M Cook & Catering"
-              className="w-[190px] sm:w-[230px] h-auto object-contain group-hover:brightness-125 transition"
-            />
+          <Link href="/" className="flex items-center gap-3 group text-[#14291F]">
+            <span className="w-11 h-11 rounded-full bg-[#F6C64D] flex items-center justify-center shadow-sm group-hover:rotate-[-6deg] transition">
+              <ChefHat className="w-6 h-6 text-[#14291F]" />
+            </span>
+            <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight">BM Cook &amp; Catering</span>
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -88,13 +88,13 @@ export function Navbar() {
                   href={link.href}
                   className={`text-sm font-medium transition duration-200 relative py-1 ${
                     isActive
-                      ? "text-gold-400 font-semibold"
-                      : "text-zinc-300 hover:text-gold-300"
+                      ? "text-[#0E6049] font-semibold"
+                      : "text-[#536158] hover:text-[#0E6049]"
                   }`}
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#A6B9BE] to-[#D8D2C6] rounded-full" />
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#F4775D] rounded-full" />
                   )}
                 </Link>
               );
@@ -109,13 +109,13 @@ export function Navbar() {
             {/* Quotation Cart Button */}
             <button
               onClick={() => setDrawerOpen(true)}
-              className="relative p-2.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-800 hover:border-gold-500/40 transition flex items-center gap-2 group"
+              className="relative p-2.5 rounded-xl bg-white hover:bg-[#F1EBDD] text-[#14291F] border border-[#E3DCCC] hover:border-[#F4775D]/40 transition flex items-center gap-2 group"
               aria-label="View Quotation Request Cart"
             >
-              <ShoppingBag className="w-5 h-5 text-gold-400 group-hover:scale-105 transition" />
+              <ShoppingBag className="w-5 h-5 text-[#0E6049] group-hover:scale-105 transition" />
               <span className="hidden sm:inline text-xs font-medium">{t.nav.quoteBtn}</span>
               {totalItemCount > 0 && (
-                <span className="w-5 h-5 rounded-full bg-gold-gradient text-zinc-950 font-bold text-xs flex items-center justify-center animate-bounce">
+                <span className="w-5 h-5 rounded-full bg-[#F6C64D] text-[#14291F] font-bold text-xs flex items-center justify-center animate-bounce">
                   {totalItemCount}
                 </span>
               )}
