@@ -20,7 +20,7 @@ export function Footer() {
   if (pathname.startsWith("/admin")) return null;
 
   return (
-    <footer className="bg-zinc-950 border-t border-zinc-900 text-zinc-400 relative overflow-hidden">
+    <footer className="site-footer bg-zinc-950 border-t border-zinc-900 text-white relative overflow-hidden">
       {/* Subtle background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-gold-500/5 blur-3xl pointer-events-none" />
 

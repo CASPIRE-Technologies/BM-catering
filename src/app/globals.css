@@ -113,10 +113,26 @@ body {
 
 /* Contrast for text placed on the green bands. */
 .bg-zinc-950 .text-zinc-100, .bg-zinc-950 .text-zinc-200,
-.bg-zinc-950 .text-zinc-300, .bg-zinc-950 .text-zinc-400,
-[class*="bg-zinc-950/"] .text-zinc-100, [class*="bg-zinc-950/"] .text-zinc-200,
-[class*="bg-zinc-950/"] .text-zinc-300, [class*="bg-zinc-950/"] .text-zinc-400 {
+.bg-zinc-950 .text-zinc-300, .bg-zinc-950 .text-zinc-400 {
   color: #FFFDF7 !important;
+}
+
+/* Keep text readable on the light cards inside green sections. */
+.site-light [class*="bg-zinc-900/"] .text-zinc-100,
+.site-light [class*="bg-zinc-900/"] .text-zinc-200,
+.site-light [class*="bg-zinc-900/"] .text-zinc-300,
+.site-light [class*="bg-zinc-900/"] .text-zinc-400 {
+  color: #14291F !important;
+}
+
+/* Footer copy is intentionally white on the deep green footer surface. */
+.site-footer,
+.site-footer p,
+.site-footer a,
+.site-footer span,
+.site-footer li,
+.site-footer h3 {
+  color: #FFFFFF !important;
 }
 
 /* The open editorial sections use the linen canvas; their headings stay ink-dark. */
