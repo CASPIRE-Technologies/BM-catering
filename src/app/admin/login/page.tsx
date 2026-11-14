@@ -82,7 +82,7 @@ export default function AdminLoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="admin@bmcatering.lk"
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-10 pr-4 py-3 text-sm text-zinc-200 focus:outline-none focus:border-gold-400"
+                className="w-full bg-white text-zinc-900 placeholder:text-zinc-400 border border-zinc-200 rounded-xl pl-10 pr-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#F4775D] focus:border-transparent transition"
               />
             </div>
           </div>
@@ -99,7 +99,7 @@ export default function AdminLoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-10 pr-4 py-3 text-sm text-zinc-200 focus:outline-none focus:border-gold-400"
+                className="w-full bg-white text-zinc-900 placeholder:text-zinc-400 border border-zinc-200 rounded-xl pl-10 pr-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#F4775D] focus:border-transparent transition"
               />
             </div>
           </div>
