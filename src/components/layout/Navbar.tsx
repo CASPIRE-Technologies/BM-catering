@@ -104,8 +104,8 @@ export function Navbar() {
 
           {/* Right Action Buttons */}
           <div className="flex items-center justify-self-end gap-2 sm:gap-3">
-            {/* Language Switcher */}
-            <div className="hidden sm:block"><LanguageSwitcher /></div>
+            {/* Language Switcher - visible on all screen sizes */}
+            <div className="flex items-center"><LanguageSwitcher /></div>
 
             {/* Quotation Cart Button */}
             <button

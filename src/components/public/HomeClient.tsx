@@ -32,23 +32,36 @@ export function HomeClient({ services, featuredRentals, galleryImages }: HomeCli
     <div className="site-light space-y-24 pb-20">
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[calc(100vh-142px)] flex items-center overflow-hidden bg-[#FBF7ED] pt-12 sm:pt-16 pb-14 sm:pb-20">
-        <div className="absolute right-[-8%] top-[8%] w-[58vw] h-[58vw] max-w-[780px] max-h-[780px] rounded-full bg-[#F9E9B5]/70 hidden md:block" />
-        <div className="absolute right-[8%] top-[14%] w-[42vw] h-[42vw] max-w-[570px] max-h-[570px] rounded-full border-[18px] border-[#F6D879] shadow-[0_30px_80px_rgba(126,91,35,0.18)] overflow-hidden hidden md:block">
+        <div className="absolute right-[-10%] top-[8%] w-[54vw] h-[54vw] max-w-[740px] max-h-[740px] rounded-full bg-[#F9E9B5]/70 hidden md:block" />
+        
+        {/* Main Banquet Circle */}
+        <div className="absolute right-[2%] lg:right-[4%] top-[14%] w-[40vw] h-[40vw] max-w-[530px] max-h-[530px] rounded-full border-[18px] border-[#F6D879] shadow-[0_30px_80px_rgba(126,91,35,0.18)] overflow-hidden hidden md:block">
           <Image
-            src="/images/catering-hero.png"
-            alt="Elegant catered wedding banquet with plated dishes and warm evening lighting"
+            src="/images/hero-banquet-night.jpg"
+            alt="BM Cook & Catering Luxury Night Banquet with Fairy Light Canopy"
             fill
             priority
-            className="object-cover"
+            className="object-cover object-center"
           />
         </div>
-        <div className="absolute right-[12%] bottom-[12%] w-40 h-20 rounded-2xl rotate-6 bg-white/95 shadow-xl border border-[#E8DFCE] p-4 hidden md:block">
-          <p className="text-sm font-bold text-[#14291F]">✨ Your day, your way</p>
-          <p className="text-xs text-[#5E6C63] mt-1">Events across Sri Lanka</p>
+
+        {/* Second Visual: Master Chef Portrait - Positioned overlapping the bottom-right of the main circle */}
+        <div className="absolute right-[-1%] lg:right-[0%] bottom-[10%] w-[24vw] h-[24vw] max-w-[320px] max-h-[320px] hidden md:block z-20 pointer-events-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.3)]">
+          <Image
+            src="/images/chef-portrait-clean.png"
+            alt="BM Cook & Catering Master Chef"
+            fill
+            className="object-contain"
+          />
+        </div>
+
+        <div className="absolute right-[18%] bottom-[6%] w-44 h-22 rounded-2xl rotate-[-3deg] bg-white/95 shadow-xl border border-[#E8DFCE] p-4 hidden md:block z-20">
+          <p className="text-sm font-bold text-[#14291F]">✨ Authentic Taste</p>
+          <p className="text-xs text-[#5E6C63] mt-1">Master Chef & Luxury Events</p>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl text-left space-y-6 sm:space-y-7">
+          <div className="max-w-xl lg:max-w-2xl text-left space-y-6 sm:space-y-7">
           {/* Trust Badge */}
           <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-[#DCEFE3] text-[#0E6049] text-sm font-bold tracking-wide">
             <span className="w-2.5 h-2.5 rounded-full bg-[#F4775D]" />
@@ -56,7 +69,7 @@ export function HomeClient({ services, featuredRentals, galleryImages }: HomeCli
           </div>
 
           {/* Main Title */}
-          <h1 className="text-[2.75rem] leading-[0.98] sm:text-7xl lg:text-8xl font-serif font-bold tracking-[-0.04em] text-[#14291F]">
+          <h1 className="text-3xl leading-[1.08] sm:text-5xl lg:text-6xl font-serif font-bold tracking-[-0.03em] text-[#14291F]">
             {t.hero.titlePre} <span className="text-gold-gradient italic">{t.hero.titleHighlight}</span>
           </h1>
 
@@ -83,14 +96,24 @@ export function HomeClient({ services, featuredRentals, galleryImages }: HomeCli
             </Link>
           </div>
 
-          {/* Key Metric Highlights */}
-          <div className="md:hidden relative w-full aspect-[1.25] max-w-sm mx-auto rounded-[2rem] border-[10px] border-[#F6D879] overflow-hidden shadow-[0_20px_50px_rgba(126,91,35,0.16)]">
-            <Image
-              src="/images/catering-hero.png"
-              alt="B.M Catering event food and hospitality"
-              fill
-              className="object-cover"
-            />
+          {/* Mobile Key Visual: Dual Overlapping Visuals */}
+          <div className="md:hidden relative w-full max-w-sm mx-auto h-[260px] my-4">
+            <div className="absolute left-2 top-0 w-52 h-52 rounded-full border-[8px] border-[#F6D879] overflow-hidden shadow-lg">
+              <Image
+                src="/images/hero-banquet-night.jpg"
+                alt="BM Cook & Catering Luxury Night Banquet with Fairy Light Canopy"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="absolute right-0 bottom-0 w-44 h-44 drop-shadow-[0_15px_30px_rgba(0,0,0,0.25)] z-10">
+              <Image
+                src="/images/chef-portrait-clean.png"
+                alt="BM Cook & Catering Master Chef"
+                fill
+                className="object-contain"
+              />
+            </div>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-5 sm:gap-6 max-w-3xl pt-7 sm:pt-8 border-t border-[#E3DCCC]">
