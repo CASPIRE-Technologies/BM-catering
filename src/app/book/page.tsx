@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { prisma } from "@/lib/db";
 import { BookingEnquiryForm } from "@/components/public/BookingEnquiryForm";
+import { loadPublicData } from "@/lib/public-content";
 
 export const metadata = {
   title: "Book an Event | B.M Catering & Luxury Events Sri Lanka",
@@ -12,18 +13,20 @@ export const revalidate = 60;
 export const dynamic = "force-dynamic";
 
 export default async function BookPage() {
-  const items = process.env.DATABASE_URL ? await prisma.inventoryItem.findMany({
-    where: { status: "AVAILABLE" },
-    select: {
-      id: true,
-      name: true,
-      sku: true,
-      rentalPrice: true,
-      imageUrl: true,
-      category: { select: { name: true } },
-    },
-    orderBy: { name: "asc" },
-  }) : [];
+  const items = process.env.DATABASE_URL
+    ? await loadPublicData("booking inventory", () => prisma.inventoryItem.findMany({
+        where: { status: "AVAILABLE" },
+        select: {
+          id: true,
+          name: true,
+          sku: true,
+          rentalPrice: true,
+          imageUrl: true,
+          category: { select: { name: true } },
+        },
+        orderBy: { name: "asc" },
+      }), [])
+    : [];
 
   const serializedItems = items.map((i) => ({
     ...i,

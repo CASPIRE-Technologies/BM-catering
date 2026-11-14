@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { prisma } from "@/lib/db";
 import { GalleryClient } from "@/components/public/GalleryClient";
-import { fallbackGallery } from "@/lib/public-content";
+import { fallbackGallery, loadPublicData } from "@/lib/public-content";
 
 export const metadata = {
   title: "Event Gallery | B.M Catering & Events Sri Lanka",
@@ -13,9 +13,11 @@ export const revalidate = 60;
 export const dynamic = "force-dynamic";
 
 export default async function GalleryPage() {
-  const images = process.env.DATABASE_URL ? await prisma.galleryImage.findMany({
-    orderBy: [{ featured: "desc" }, { sortOrder: "asc" }, { createdAt: "desc" }],
-  }) : fallbackGallery;
+  const images = process.env.DATABASE_URL
+    ? await loadPublicData("gallery", () => prisma.galleryImage.findMany({
+        orderBy: [{ featured: "desc" }, { sortOrder: "asc" }, { createdAt: "desc" }],
+      }), fallbackGallery)
+    : fallbackGallery;
 
   return (
     <div className="site-light space-y-12 py-12">

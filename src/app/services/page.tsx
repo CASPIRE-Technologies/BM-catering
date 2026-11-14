@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 import { ServicesClient } from "@/components/public/ServicesClient";
-import { fallbackServices } from "@/lib/public-content";
+import { fallbackServices, loadPublicData } from "@/lib/public-content";
 
 export const metadata = {
   title: "Our Services | B.M Catering & Luxury Event Services Sri Lanka",
@@ -14,20 +14,26 @@ export const dynamic = "force-dynamic";
 export default async function ServicesPage() {
   const databaseConfigured = Boolean(process.env.DATABASE_URL);
 
-  const cateringServices = databaseConfigured ? await prisma.service.findMany({
-    where: { category: { slug: "catering" } },
-    orderBy: { sortOrder: "asc" },
-  }) : fallbackServices.catering;
+  const cateringServices = databaseConfigured
+    ? await loadPublicData("catering services", () => prisma.service.findMany({
+        where: { category: { slug: "catering" } },
+        orderBy: { sortOrder: "asc" },
+      }), fallbackServices.catering)
+    : fallbackServices.catering;
 
-  const rentalServices = databaseConfigured ? await prisma.service.findMany({
-    where: { category: { slug: "equipment-rentals" } },
-    orderBy: { sortOrder: "asc" },
-  }) : fallbackServices.rentals;
+  const rentalServices = databaseConfigured
+    ? await loadPublicData("rental services", () => prisma.service.findMany({
+        where: { category: { slug: "equipment-rentals" } },
+        orderBy: { sortOrder: "asc" },
+      }), fallbackServices.rentals)
+    : fallbackServices.rentals;
 
-  const lightingServices = databaseConfigured ? await prisma.service.findMany({
-    where: { category: { slug: "lighting-decorations" } },
-    orderBy: { sortOrder: "asc" },
-  }) : fallbackServices.lighting;
+  const lightingServices = databaseConfigured
+    ? await loadPublicData("lighting services", () => prisma.service.findMany({
+        where: { category: { slug: "lighting-decorations" } },
+        orderBy: { sortOrder: "asc" },
+      }), fallbackServices.lighting)
+    : fallbackServices.lighting;
 
   // Serialize prices
   const serializedCatering = cateringServices.map((s) => ({

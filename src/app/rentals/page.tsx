@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 import { RentalCatalogueClient } from "@/components/public/RentalCatalogueClient";
-import { fallbackRentalItems } from "@/lib/public-content";
+import { fallbackRentalItems, loadPublicData } from "@/lib/public-content";
 
 export const metadata = {
   title: "Equipment Rental Catalogue | B.M Catering & Events Sri Lanka",
@@ -14,15 +14,19 @@ export const dynamic = "force-dynamic";
 export default async function RentalsPage() {
   const databaseConfigured = Boolean(process.env.DATABASE_URL);
 
-  const items = databaseConfigured ? await prisma.inventoryItem.findMany({
-    where: { status: { not: "RETIRED" } },
-    include: { category: true },
-    orderBy: { name: "asc" },
-  }) : fallbackRentalItems;
+  const items = databaseConfigured
+    ? await loadPublicData("rental inventory", () => prisma.inventoryItem.findMany({
+        where: { status: { not: "RETIRED" } },
+        include: { category: true },
+        orderBy: { name: "asc" },
+      }), fallbackRentalItems)
+    : fallbackRentalItems;
 
-  const categories = databaseConfigured ? await prisma.inventoryCategory.findMany({
-    orderBy: { name: "asc" },
-  }) : fallbackRentalItems.map((item) => item.category);
+  const categories = databaseConfigured
+    ? await loadPublicData("rental categories", () => prisma.inventoryCategory.findMany({
+        orderBy: { name: "asc" },
+      }), fallbackRentalItems.map((item) => item.category))
+    : fallbackRentalItems.map((item) => item.category);
 
   const serializedItems = items.map((i) => ({
     id: i.id,
@@ -32,8 +36,8 @@ export default async function RentalsPage() {
     imageUrl: i.imageUrl,
     totalQuantity: i.totalQuantity,
     availableQuantity: "availableQuantity" in i
-      ? i.availableQuantity
-      : Math.max(0, i.totalQuantity - (i.damagedQuantity || 0) - (i.maintenanceQuantity || 0)),
+      ? Math.max(0, Number(i.availableQuantity))
+      : Math.max(0, Number(i.totalQuantity) - Number(i.damagedQuantity || 0) - Number(i.maintenanceQuantity || 0)),
     rentalPrice: Number(i.rentalPrice),
     pricingUnit: i.pricingUnit,
     condition: i.condition,
