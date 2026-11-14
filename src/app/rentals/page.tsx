@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { prisma } from "@/lib/db";
 import { RentalCatalogueClient } from "@/components/public/RentalCatalogueClient";
 import { fallbackRentalItems } from "@/lib/public-content";
@@ -47,32 +46,6 @@ export default async function RentalsPage() {
 
   return (
     <div className="site-light space-y-12 py-12">
-      {/* Header */}
-      <section className="page-hero relative py-20 sm:py-24 border-b overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/real/PHOTO-2026-11-04-21-37-41.jpg"
-            alt="B.M Catering Rental Inventory"
-            fill
-            className="object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-white/10" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <span className="text-gold-400 text-xs uppercase tracking-[0.2em] font-semibold">
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#DCEFE3] px-4 py-2 text-xs font-bold tracking-wide text-[#0E6049]">
-              <span className="h-2 w-2 rounded-full bg-[#F4775D]" /> Build your event setup
-            </span>
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-serif font-bold text-white tracking-tight">
-            Rental Catalogue
-          </h1>
-          <p className="text-zinc-400 max-w-2xl mx-auto text-sm sm:text-base">
-            Choose the practical pieces that make your venue feel ready, welcoming and beautifully put together.
-          </p>
-        </div>
-      </section>
-
       {/* Interactive Catalogue Client Component */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <RentalCatalogueClient

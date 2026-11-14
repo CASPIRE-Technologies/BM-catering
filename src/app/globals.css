@@ -185,6 +185,14 @@ body {
 .booking-form-shell .text-zinc-500 {
   color: #5E6C63 !important;
 }
+.rental-dates-panel .text-zinc-300,
+.rental-dates-panel .text-zinc-400,
+.rental-dates-panel .text-zinc-500 {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+.rental-dates-panel .text-gold-400 {
+  color: #F4775D !important;
+}
 
 @media (max-width: 640px) {
   .page-hero h1 { font-size: clamp(2.6rem, 12vw, 4rem); line-height: .98; }

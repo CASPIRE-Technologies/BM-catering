@@ -163,7 +163,7 @@ export function RentalCatalogueClient({
       </section>
 
       {/* 1. Date Range Availability Tool Banner */}
-      <div className="rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-900/90 to-zinc-950 border border-gold-500/30 p-6 sm:p-8 shadow-2xl">
+      <div className="rental-dates-panel rounded-2xl bg-[#0E6049] border border-[#0E6049] p-6 sm:p-8 shadow-xl">
         <div className="max-w-4xl mx-auto space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
@@ -171,7 +171,7 @@ export function RentalCatalogueClient({
                 <Calendar className="w-5 h-5 text-gold-400" />
                 <span>{t.rentalsPage.selectedDates}</span>
               </h3>
-              <p className="text-xs sm:text-sm text-zinc-400 mt-1">
+              <p className="text-xs sm:text-sm text-white/75 mt-1">
                 Select your event dates to see exact available warehouse stock and prevent double booking.
               </p>
             </div>
@@ -192,7 +192,7 @@ export function RentalCatalogueClient({
                 min={new Date().toISOString().split("T")[0]}
                 value={localStartDate}
                 onChange={(e) => setLocalStartDate(e.target.value)}
-                className="w-full bg-zinc-950 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-gold-400"
+                className="w-full bg-[#FBF7ED] border border-white/30 rounded-xl px-4 py-2.5 text-sm text-[#14291F] focus:outline-none focus:border-[#F4775D]"
                 required
               />
             </div>
@@ -205,7 +205,7 @@ export function RentalCatalogueClient({
                 min={localStartDate || new Date().toISOString().split("T")[0]}
                 value={localEndDate}
                 onChange={(e) => setLocalEndDate(e.target.value)}
-                className="w-full bg-zinc-950 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-gold-400"
+                className="w-full bg-[#FBF7ED] border border-white/30 rounded-xl px-4 py-2.5 text-sm text-[#14291F] focus:outline-none focus:border-[#F4775D]"
                 required
               />
             </div>

@@ -21,7 +21,8 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const { totalItemCount } = useQuotation();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const isSinhala = language === "si";
 
   const isAdminSection = pathname.startsWith("/admin");
   if (isAdminSection) {
@@ -68,25 +69,25 @@ export function Navbar() {
 
       {/* Main Glass Navbar */}
       <header className="sticky top-0 z-40 bg-[#FBF7ED]/95 backdrop-blur-md border-b border-[#E3DCCC]">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 h-20 grid grid-cols-1 lg:grid-cols-[minmax(250px,1fr)_auto_minmax(250px,1fr)] items-center gap-5">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 h-20 grid grid-cols-1 lg:grid-cols-[minmax(220px,1fr)_minmax(0,auto)_minmax(220px,1fr)] items-center gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center group text-[#14291F] min-w-0">
             <img
               src="/images/bm-cook-catering-logo.png"
               alt="BM Cook & Catering"
-              className="w-[205px] sm:w-[245px] lg:w-[260px] h-auto object-contain object-left [filter:brightness(0)_saturate(100%)_invert(13%)_sepia(20%)_saturate(950%)_hue-rotate(105deg)_brightness(88%)_contrast(94%)] transition-transform group-hover:scale-[1.02]"
+              className={`${isSinhala ? "w-[180px] sm:w-[215px] lg:w-[230px]" : "w-[205px] sm:w-[245px] lg:w-[260px]"} h-auto object-contain object-left [filter:brightness(0)_saturate(100%)_invert(13%)_sepia(20%)_saturate(950%)_hue-rotate(105deg)_brightness(88%)_contrast(94%)] transition-transform group-hover:scale-[1.02]`}
             />
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center justify-center gap-5 xl:gap-7 whitespace-nowrap">
+          <nav className={`${isSinhala ? "gap-3 xl:gap-5" : "gap-5 xl:gap-7"} hidden lg:flex items-center justify-center whitespace-nowrap`}>
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-sm font-medium transition duration-200 relative py-1 ${
+                    className={`${isSinhala ? "text-[12px] xl:text-[13px]" : "text-sm"} font-medium transition duration-200 relative py-1 ${
                     isActive
                       ? "text-[#0E6049] font-semibold"
                       : "text-[#536158] hover:text-[#0E6049]"
