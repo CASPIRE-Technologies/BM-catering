@@ -137,9 +137,9 @@ export function RentalCatalogueClient({
   });
 
   return (
-    <div className="space-y-12">
+    <div className="site-light space-y-12">
       {/* Header Banner */}
-      <section className="relative -mt-12 py-14 bg-zinc-950 border-b border-zinc-900 overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
+      <section className="page-hero relative -mt-12 py-20 sm:py-24 border-b overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/real/PHOTO-2026-11-04-21-37-41.jpg"
@@ -147,17 +147,17 @@ export function RentalCatalogueClient({
             fill
             className="object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent" />
+          <div className="absolute inset-0 bg-white/10" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <span className="text-gold-400 text-xs uppercase tracking-[0.2em] font-semibold">
-            {t.rentalsPage.kicker}
+            Build your event setup
           </span>
           <h1 className="text-4xl sm:text-6xl font-serif font-bold text-white tracking-tight">
-            {t.rentalsPage.title}
+            Rental Catalogue
           </h1>
           <p className="text-zinc-400 max-w-2xl mx-auto text-sm sm:text-base">
-            {t.rentalsPage.subtitle}
+            Choose the practical pieces that make your venue feel ready, welcoming and beautifully put together.
           </p>
         </div>
       </section>

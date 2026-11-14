@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { prisma } from "@/lib/db";
 import { GalleryClient } from "@/components/public/GalleryClient";
+import { fallbackGallery } from "@/lib/public-content";
 
 export const metadata = {
   title: "Event Gallery | B.M Catering & Events Sri Lanka",
@@ -14,12 +15,12 @@ export const dynamic = "force-dynamic";
 export default async function GalleryPage() {
   const images = process.env.DATABASE_URL ? await prisma.galleryImage.findMany({
     orderBy: [{ featured: "desc" }, { sortOrder: "asc" }, { createdAt: "desc" }],
-  }) : [];
+  }) : fallbackGallery;
 
   return (
-    <div className="space-y-12 py-12">
+    <div className="site-light space-y-12 py-12">
       {/* Header */}
-      <section className="relative py-14 bg-zinc-950 border-b border-zinc-900 overflow-hidden">
+      <section className="page-hero relative py-20 sm:py-24 border-b overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/real/PHOTO-2026-11-04-21-37-53.jpg"
@@ -27,17 +28,17 @@ export default async function GalleryPage() {
             fill
             className="object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent" />
+          <div className="absolute inset-0 bg-white/10" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <span className="text-gold-400 text-xs uppercase tracking-[0.2em] font-semibold">
-            Visual Portfolio
+            A little inspiration for your day
           </span>
           <h1 className="text-4xl sm:text-6xl font-serif font-bold text-white tracking-tight">
-            Completed Event Highlights
+            Moments worth gathering for
           </h1>
           <p className="text-zinc-400 max-w-2xl mx-auto text-sm sm:text-base">
-            Every banquet, marquee canopy, and lighting installation represents our commitment to hospitality and perfection.
+            Explore the feeling we aim to create: generous food, thoughtful details and spaces that bring people closer.
           </p>
         </div>
       </section>

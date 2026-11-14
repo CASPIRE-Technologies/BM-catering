@@ -135,6 +135,62 @@ body {
   color: #FFFFFF !important;
 }
 
+.page-hero {
+  background: linear-gradient(105deg, #E5F2EA 0%, #FBF7ED 50%, #FCE6DE 100%) !important;
+  border-color: #E3DCCC !important;
+}
+.page-hero .text-white, .page-hero .text-zinc-100 { color: #14291F !important; }
+.page-hero .text-zinc-300, .page-hero .text-zinc-400 { color: #5E6C63 !important; }
+
+/* Shared editorial page treatment for the rebuilt public sections. */
+.site-light {
+  background: #FBF7ED;
+  color: #14291F;
+}
+.site-light [class*="bg-zinc-900/"] {
+  background: #FFFDF7 !important;
+}
+.site-light .bg-zinc-950 {
+  background: #0E6049 !important;
+}
+.site-light .border-zinc-800,
+.site-light [class*="border-zinc-800/"],
+.site-light .border-zinc-700 {
+  border-color: #E3DCCC !important;
+}
+.site-light input,
+.site-light textarea,
+.site-light select,
+.booking-form-shell input,
+.booking-form-shell textarea,
+.booking-form-shell select {
+  background: #FBF7ED !important;
+  color: #14291F !important;
+  border-color: #E3DCCC !important;
+}
+.booking-form-shell [class*="bg-zinc-900/"],
+.booking-form-shell .bg-zinc-900 {
+  background: #FFFDF7 !important;
+}
+.booking-form-shell .bg-zinc-950 {
+  background: #FBF7ED !important;
+}
+.booking-form-shell .text-white,
+.booking-form-shell .text-zinc-100,
+.booking-form-shell .text-zinc-200,
+.booking-form-shell .text-zinc-300 {
+  color: #14291F !important;
+}
+.booking-form-shell .text-zinc-400,
+.booking-form-shell .text-zinc-500 {
+  color: #5E6C63 !important;
+}
+
+@media (max-width: 640px) {
+  .page-hero h1 { font-size: clamp(2.6rem, 12vw, 4rem); line-height: .98; }
+  .page-hero { padding-top: 4.5rem !important; padding-bottom: 4.5rem !important; }
+}
+
 /* The open editorial sections use the linen canvas; their headings stay ink-dark. */
 .site-light > section:nth-child(2) > div > div:first-child .text-zinc-100,
 .site-light > section:nth-child(2) > div > div:first-child .text-zinc-200,

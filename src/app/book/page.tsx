@@ -31,9 +31,9 @@ export default async function BookPage() {
   }));
 
   return (
-    <div className="space-y-12 py-12">
+    <div className="site-light space-y-12 py-12">
       {/* Header */}
-      <section className="relative py-14 bg-zinc-950 border-b border-zinc-900 overflow-hidden">
+      <section className="page-hero relative py-20 sm:py-24 border-b overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/real/PHOTO-2026-11-04-21-37-27.jpg"
@@ -41,24 +41,47 @@ export default async function BookPage() {
             fill
             className="object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/80 to-transparent" />
+          <div className="absolute inset-0 bg-white/10" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <span className="text-gold-400 text-xs uppercase tracking-[0.2em] font-semibold">
-            Reserve Your Date
+          <span className="inline-flex items-center gap-2 mx-auto rounded-full bg-[#DCEFE3] px-4 py-2 text-xs font-bold tracking-wide text-[#0E6049]">
+            <span className="h-2 w-2 rounded-full bg-[#F4775D]" />
+            Start with a few details
           </span>
-          <h1 className="text-4xl sm:text-6xl font-serif font-bold text-white tracking-tight">
-            Event Booking & Quotation Request
+          <h1 className="text-5xl sm:text-7xl font-serif font-bold text-white tracking-tight">
+            Booking Enquiry
           </h1>
-          <p className="text-zinc-400 max-w-2xl mx-auto text-sm sm:text-base">
-            Provide your event details below. Our planning team will verify date availability and send an official itemized quotation via WhatsApp and email.
+          <p className="text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+            Tell us what you are planning. This enquiry form is ready for your next connection with the BM team.
           </p>
         </div>
       </section>
 
       {/* Booking Form */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <BookingEnquiryForm availableItems={serializedItems} />
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-[0.78fr_1.22fr] gap-6 items-start">
+          <aside className="rounded-[2rem] bg-[#0E6049] text-white p-8 sm:p-10 lg:sticky lg:top-28">
+            <h2 className="font-serif text-4xl sm:text-5xl leading-[0.95] font-bold">
+              Let’s plan<br />something<br />lovely.
+            </h2>
+            <p className="mt-8 text-white/85 leading-relaxed">
+              Send the basics and we can discuss the right menu, rental pieces and setup support for your occasion.
+            </p>
+            <ul className="mt-8 space-y-3 text-white/90">
+              <li>• Weddings and homecomings</li>
+              <li>• Family celebrations</li>
+              <li>• Corporate gatherings</li>
+              <li>• Festivals and outdoor events</li>
+            </ul>
+            <div className="mt-10 border-t border-white/20 pt-6">
+              <p className="font-bold">Prefer a quick call?</p>
+              <a href="tel:+94771234567" className="mt-1 inline-block text-white/90">+94 77 123 4567</a>
+            </div>
+          </aside>
+          <div className="booking-form-shell rounded-[2rem] bg-white border border-[#E3DCCC] p-3 sm:p-6 shadow-sm">
+            <BookingEnquiryForm availableItems={serializedItems} />
+          </div>
+        </div>
       </section>
     </div>
   );
