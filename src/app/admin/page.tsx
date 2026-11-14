@@ -35,15 +35,21 @@ import {
 export default function AdminDashboardPage() {
   const [data, setData] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   const fetchAnalytics = async () => {
     setLoading(true);
+    setError(null);
     try {
       const res = await fetch("/api/analytics");
       const json = await res.json();
+      if (!res.ok || json.error || !json.summary) {
+        throw new Error(json.error || "Analytics are temporarily unavailable.");
+      }
       setData(json);
     } catch (err) {
       console.error("Failed to load analytics", err);
+      setError(err instanceof Error ? err.message : "Analytics are temporarily unavailable.");
     } finally {
       setLoading(false);
     }
@@ -53,11 +59,31 @@ export default function AdminDashboardPage() {
     fetchAnalytics();
   }, []);
 
-  if (loading || !data) {
+  if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh] space-y-3 flex-col">
         <div className="w-8 h-8 border-2 border-gold-400 border-t-transparent rounded-full animate-spin" />
         <p className="text-xs text-zinc-400 tracking-wider">Loading operations analytics...</p>
+      </div>
+    );
+  }
+
+  if (error || !data) {
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="max-w-md rounded-2xl border border-rose-500/30 bg-rose-500/10 p-6 text-center space-y-4">
+          <AlertTriangle className="w-8 h-8 text-rose-400 mx-auto" />
+          <h1 className="text-lg font-semibold text-white">Admin dashboard unavailable</h1>
+          <p className="text-sm text-zinc-400">
+            {error || "The dashboard could not load its data."} Check the database connection and try again.
+          </p>
+          <button
+            onClick={fetchAnalytics}
+            className="px-4 py-2 rounded-xl bg-gold-gradient text-zinc-950 font-bold text-xs uppercase tracking-wider"
+          >
+            Try again
+          </button>
+        </div>
       </div>
     );
   }
