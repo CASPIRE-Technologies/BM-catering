@@ -6,39 +6,39 @@
 
 @layer base {
   :root {
-    --background: 20 14% 4%;
-    --foreground: 40 18% 81%;
-    --card: 24 10% 7%;
-    --card-foreground: 40 18% 81%;
-    --popover: 24 10% 7%;
-    --popover-foreground: 40 18% 81%;
-    --primary: 193 16% 70%; /* #A6B9BE Slate Sage */
-    --primary-foreground: 20 14% 4%;
+    --background: 40 35% 95%;
+    --foreground: 196 19% 18%;
+    --card: 40 30% 98%;
+    --card-foreground: 196 19% 18%;
+    --popover: 40 30% 98%;
+    --popover-foreground: 196 19% 18%;
+    --primary: 193 16% 70%; /* #A6B9BE Mineral Slate */
+    --primary-foreground: 196 19% 18%;
     --secondary: 40 18% 81%; /* #D8D2C6 Warm Linen */
-    --secondary-foreground: 20 14% 4%;
-    --muted: 30 10% 18%;
-    --muted-foreground: 40 10% 65%;
+    --secondary-foreground: 196 19% 18%;
+    --muted: 40 21% 89%;
+    --muted-foreground: 196 10% 42%;
     --accent: 193 16% 70%;
-    --accent-foreground: 20 14% 4%;
+    --accent-foreground: 196 19% 18%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 30 10% 18%;
-    --input: 30 10% 18%;
+    --border: 40 18% 81%;
+    --input: 40 18% 81%;
     --ring: 193 16% 70%;
     --radius: 0.5rem;
   }
 }
 
 body {
-  background-color: #0b0b0e;
-  color: #D8D2C6;
+  background-color: #F5F0E8;
+  color: #26383C;
   font-family: "Noto Sans Sinhala", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
 }
 
-/* Luxury Theme Text Gradient (#D8D2C6 to #A6B9BE) */
+/* B.M. palette: warm linen, mineral slate, and deep blue-green */
 .text-gold-gradient {
-  background: linear-gradient(135deg, #FAF9F7 0%, #D8D2C6 45%, #A6B9BE 100%);
+  background: linear-gradient(135deg, #FCFBF8 0%, #D8D2C6 45%, #A6B9BE 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -62,10 +62,10 @@ body {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #111115;
+  background: #E9E2D7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a32;
+  background: #A6B9BE;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -74,13 +74,43 @@ body {
 
 /* Smooth glass effect */
 .glass-panel {
-  background: rgba(18, 18, 22, 0.75);
+  background: rgba(252, 251, 248, 0.82);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(38, 56, 60, 0.12);
 }
 
 .glass-panel-gold {
-  background: rgba(18, 22, 23, 0.85);
+  background: rgba(216, 210, 198, 0.82);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(166, 185, 190, 0.25);
+  border: 1px solid rgba(90, 111, 116, 0.25);
+}
+
+/* Re-theme legacy zinc utility surfaces without changing component behavior. */
+.bg-\[\#09090b\] { background-color: #F5F0E8 !important; }
+.bg-zinc-950 { background-color: #203438 !important; }
+.bg-zinc-900 { background-color: #30474B !important; }
+.bg-zinc-800 { background-color: #496165 !important; }
+.bg-zinc-700 { background-color: #61777A !important; }
+.text-zinc-100, .text-zinc-200 { color: #F8F6F1 !important; }
+.text-zinc-300 { color: #E6E1D8 !important; }
+.text-zinc-400 { color: #BFCAC8 !important; }
+.text-zinc-500 { color: #9AAEAE !important; }
+.border-zinc-900 { border-color: rgba(216, 210, 198, 0.13) !important; }
+.border-zinc-800, .border-zinc-800\/80 { border-color: rgba(166, 185, 190, 0.25) !important; }
+.border-zinc-700 { border-color: rgba(216, 210, 198, 0.38) !important; }
+[class*="bg-zinc-950/"] { background-color: rgba(32, 52, 56, 0.72) !important; }
+[class*="bg-zinc-900/"] { background-color: rgba(48, 71, 75, 0.72) !important; }
+
+/* The open editorial sections use the linen canvas; their headings stay ink-dark. */
+.site-light > section:nth-child(2) > div > div:first-child .text-zinc-100,
+.site-light > section:nth-child(2) > div > div:first-child .text-zinc-200,
+.site-light > section:nth-child(2) > div > div:first-child .text-zinc-400,
+.site-light > section:nth-child(4) > div > div:first-child .text-zinc-100,
+.site-light > section:nth-child(4) > div > div:first-child .text-zinc-400,
+.site-light > section:nth-child(6) > div > div:first-child .text-zinc-100,
+.site-light > section:nth-child(6) > div > div:first-child .text-zinc-400 {
+  color: #26383C !important;
+}
+.site-light > section:nth-child(2) > div > div:first-child .text-zinc-200 {
+  color: #3F565A !important;
 }

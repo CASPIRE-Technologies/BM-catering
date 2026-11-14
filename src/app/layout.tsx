@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth">
-      <body className="min-h-screen flex flex-col bg-[#09090b] text-[#D8D2C6] antialiased selection:bg-[#A6B9BE] selection:text-black">
+      <body className="min-h-screen flex flex-col bg-[#F5F0E8] text-[#26383C] antialiased selection:bg-[#A6B9BE] selection:text-black">
         <LanguageProvider>
           <QuotationProvider>
             <Navbar />

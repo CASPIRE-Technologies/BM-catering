@@ -29,7 +29,7 @@ export function HomeClient({ services, featuredRentals, galleryImages }: HomeCli
   const { t, language } = useLanguage();
 
   return (
-    <div className="space-y-24 pb-20">
+    <div className="site-light space-y-24 pb-20">
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-12 pb-20">
         <div className="absolute inset-0 z-0">
