@@ -14,7 +14,6 @@ import {
   Phone,
   Sparkles,
   Lock,
-  ChefHat,
 } from "lucide-react";
 
 export function Navbar() {
@@ -69,17 +68,18 @@ export function Navbar() {
 
       {/* Main Glass Navbar */}
       <header className="sticky top-0 z-40 bg-[#FBF7ED]/95 backdrop-blur-md border-b border-[#E3DCCC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 h-20 grid grid-cols-1 lg:grid-cols-[minmax(250px,1fr)_auto_minmax(250px,1fr)] items-center gap-5">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group text-[#14291F]">
-            <span className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#F6C64D] flex items-center justify-center shadow-sm group-hover:rotate-[-6deg] transition shrink-0">
-              <ChefHat className="w-5 h-5 sm:w-6 sm:h-6 text-[#14291F]" />
-            </span>
-            <span className="font-serif text-[17px] sm:text-2xl font-bold tracking-tight whitespace-nowrap">BM Cook &amp; Catering</span>
+          <Link href="/" className="flex items-center group text-[#14291F] min-w-0">
+            <img
+              src="/images/bm-cook-catering-logo.png"
+              alt="BM Cook & Catering"
+              className="w-[205px] sm:w-[245px] lg:w-[260px] h-auto object-contain object-left [filter:brightness(0)_saturate(100%)_invert(13%)_sepia(20%)_saturate(950%)_hue-rotate(105deg)_brightness(88%)_contrast(94%)] transition-transform group-hover:scale-[1.02]"
+            />
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center justify-center gap-5 xl:gap-7 whitespace-nowrap">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -102,7 +102,7 @@ export function Navbar() {
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
+          <div className="flex items-center justify-self-end gap-2 sm:gap-3">
             {/* Language Switcher */}
             <div className="hidden sm:block"><LanguageSwitcher /></div>
 
