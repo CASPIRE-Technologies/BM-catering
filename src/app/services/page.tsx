@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/db";
 import { ServicesClient } from "@/components/public/ServicesClient";
+import { fallbackServices } from "@/lib/public-content";
 
 export const metadata = {
   title: "Our Services | B.M Catering & Luxury Event Services Sri Lanka",
@@ -16,17 +17,17 @@ export default async function ServicesPage() {
   const cateringServices = databaseConfigured ? await prisma.service.findMany({
     where: { category: { slug: "catering" } },
     orderBy: { sortOrder: "asc" },
-  }) : [];
+  }) : fallbackServices.catering;
 
   const rentalServices = databaseConfigured ? await prisma.service.findMany({
     where: { category: { slug: "equipment-rentals" } },
     orderBy: { sortOrder: "asc" },
-  }) : [];
+  }) : fallbackServices.rentals;
 
   const lightingServices = databaseConfigured ? await prisma.service.findMany({
     where: { category: { slug: "lighting-decorations" } },
     orderBy: { sortOrder: "asc" },
-  }) : [];
+  }) : fallbackServices.lighting;
 
   // Serialize prices
   const serializedCatering = cateringServices.map((s) => ({
