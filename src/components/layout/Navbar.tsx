@@ -43,10 +43,10 @@ export function Navbar() {
     <>
       {/* Top Banner Notice */}
       <div className="bg-zinc-950 border-b border-zinc-900 py-2 px-4 text-xs text-white">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-2">
+        <div className="max-w-7xl mx-auto flex justify-between items-center gap-4">
+          <div className="flex items-center gap-2 min-w-0">
             <span className="inline-block w-2 h-2 rounded-full bg-[#F6C64D] animate-pulse"></span>
-            <span>{t.topBanner}</span>
+            <span className="truncate">{t.topBanner}</span>
           </div>
           <div className="hidden sm:flex items-center gap-6">
             <a
@@ -72,10 +72,10 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group text-[#14291F]">
-            <span className="w-11 h-11 rounded-full bg-[#F6C64D] flex items-center justify-center shadow-sm group-hover:rotate-[-6deg] transition">
-              <ChefHat className="w-6 h-6 text-[#14291F]" />
+            <span className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#F6C64D] flex items-center justify-center shadow-sm group-hover:rotate-[-6deg] transition shrink-0">
+              <ChefHat className="w-5 h-5 sm:w-6 sm:h-6 text-[#14291F]" />
             </span>
-            <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight">BM Cook &amp; Catering</span>
+            <span className="font-serif text-[17px] sm:text-2xl font-bold tracking-tight whitespace-nowrap">BM Cook &amp; Catering</span>
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -104,7 +104,7 @@ export function Navbar() {
           {/* Right Action Buttons */}
           <div className="flex items-center gap-2.5 sm:gap-3">
             {/* Language Switcher */}
-            <LanguageSwitcher />
+            <div className="hidden sm:block"><LanguageSwitcher /></div>
 
             {/* Quotation Cart Button */}
             <button

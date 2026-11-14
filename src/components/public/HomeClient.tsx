@@ -31,9 +31,9 @@ export function HomeClient({ services, featuredRentals, galleryImages }: HomeCli
   return (
     <div className="site-light space-y-24 pb-20">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[calc(100vh-142px)] flex items-center overflow-hidden bg-[#FBF7ED] pt-16 pb-20">
-        <div className="absolute right-[-8%] top-[8%] w-[58vw] h-[58vw] max-w-[780px] max-h-[780px] rounded-full bg-[#F9E9B5]/70" />
-        <div className="absolute right-[8%] top-[14%] w-[42vw] h-[42vw] max-w-[570px] max-h-[570px] rounded-full border-[18px] border-[#F6D879] shadow-[0_30px_80px_rgba(126,91,35,0.18)] overflow-hidden">
+      <section className="relative min-h-[calc(100vh-142px)] flex items-center overflow-hidden bg-[#FBF7ED] pt-12 sm:pt-16 pb-14 sm:pb-20">
+        <div className="absolute right-[-8%] top-[8%] w-[58vw] h-[58vw] max-w-[780px] max-h-[780px] rounded-full bg-[#F9E9B5]/70 hidden md:block" />
+        <div className="absolute right-[8%] top-[14%] w-[42vw] h-[42vw] max-w-[570px] max-h-[570px] rounded-full border-[18px] border-[#F6D879] shadow-[0_30px_80px_rgba(126,91,35,0.18)] overflow-hidden hidden md:block">
           <Image
             src="/images/catering-hero.png"
             alt="Elegant catered wedding banquet with plated dishes and warm evening lighting"
@@ -48,7 +48,7 @@ export function HomeClient({ services, featuredRentals, galleryImages }: HomeCli
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl text-left space-y-7">
+          <div className="max-w-2xl text-left space-y-6 sm:space-y-7">
           {/* Trust Badge */}
           <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-[#DCEFE3] text-[#0E6049] text-sm font-bold tracking-wide">
             <span className="w-2.5 h-2.5 rounded-full bg-[#F4775D]" />
@@ -56,27 +56,27 @@ export function HomeClient({ services, featuredRentals, galleryImages }: HomeCli
           </div>
 
           {/* Main Title */}
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-serif font-bold tracking-[-0.04em] text-[#14291F] leading-[0.95]">
+          <h1 className="text-[2.75rem] leading-[0.98] sm:text-7xl lg:text-8xl font-serif font-bold tracking-[-0.04em] text-[#14291F]">
             {t.hero.titlePre} <span className="text-gold-gradient italic">{t.hero.titleHighlight}</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl text-[#5E6C63] max-w-xl font-medium leading-relaxed">
+          <p className="text-base sm:text-xl text-[#5E6C63] max-w-xl font-medium leading-relaxed">
             {t.hero.subtitle}
           </p>
 
           {/* Call to Actions */}
-          <div className="flex flex-col sm:flex-row items-start gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-3 sm:gap-4 pt-1 sm:pt-2">
             <Link
               href="/book"
-              className="w-full sm:w-auto px-8 py-4 rounded-full text-base font-bold bg-[#F4775D] text-white hover:bg-[#E96750] shadow-[0_12px_24px_rgba(244,119,93,0.24)] transition flex items-center justify-center gap-2 group"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-bold bg-[#F4775D] text-white hover:bg-[#E96750] shadow-[0_12px_24px_rgba(244,119,93,0.24)] transition flex items-center justify-center gap-2 group"
             >
               <span>{t.hero.bookCta}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
             </Link>
             <Link
               href="/rentals"
-              className="w-full sm:w-auto px-8 py-4 rounded-full text-base font-semibold tracking-wide bg-white text-[#14291F] hover:bg-[#F1EBDD] border border-[#E3DCCC] transition flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-semibold tracking-wide bg-white text-[#14291F] hover:bg-[#F1EBDD] border border-[#E3DCCC] transition flex items-center justify-center gap-2"
             >
               <Tent className="w-4 h-4 text-[#0E6049]" />
               <span>{t.hero.rentalsCta}</span>
@@ -84,7 +84,16 @@ export function HomeClient({ services, featuredRentals, galleryImages }: HomeCli
           </div>
 
           {/* Key Metric Highlights */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl pt-8 border-t border-[#E3DCCC]">
+          <div className="md:hidden relative w-full aspect-[1.25] max-w-sm mx-auto rounded-[2rem] border-[10px] border-[#F6D879] overflow-hidden shadow-[0_20px_50px_rgba(126,91,35,0.16)]">
+            <Image
+              src="/images/catering-hero.png"
+              alt="B.M Catering event food and hospitality"
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-5 sm:gap-6 max-w-3xl pt-7 sm:pt-8 border-t border-[#E3DCCC]">
             <div>
               <p className="text-2xl sm:text-3xl font-serif font-bold text-[#0E6049]">
                 {t.hero.stats.yearsVal}
