@@ -112,17 +112,61 @@ body {
 .hover\:bg-emerald-500:hover { background-color: #177256 !important; }
 
 /* Contrast for text placed on the green bands. */
-.bg-zinc-950 .text-zinc-100, .bg-zinc-950 .text-zinc-200,
-.bg-zinc-950 .text-zinc-300, .bg-zinc-950 .text-zinc-400 {
+.bg-zinc-950,
+[class*="bg-zinc-950"] {
   color: #FFFDF7 !important;
+}
+
+.bg-zinc-950 h1, .bg-zinc-950 h2, .bg-zinc-950 h3, .bg-zinc-950 h4,
+[class*="bg-zinc-950"] h1, [class*="bg-zinc-950"] h2, [class*="bg-zinc-950"] h3, [class*="bg-zinc-950"] h4,
+.bg-zinc-950 .text-zinc-100, .bg-zinc-950 .text-zinc-200,
+[class*="bg-zinc-950"] .text-zinc-100, [class*="bg-zinc-950"] .text-zinc-200 {
+  color: #FFFFFF !important;
+}
+
+.bg-zinc-950 .text-zinc-300, .bg-zinc-950 .text-zinc-400,
+[class*="bg-zinc-950"] .text-zinc-300, [class*="bg-zinc-950"] .text-zinc-400 {
+  color: #D6E8DF !important;
+}
+
+.bg-zinc-950 .text-gold-400,
+[class*="bg-zinc-950"] .text-gold-400,
+.bg-zinc-950 .text-gold-300,
+[class*="bg-zinc-950"] .text-gold-300 {
+  color: #F8B374 !important;
 }
 
 /* Keep text readable on the light cards inside green sections. */
 .site-light [class*="bg-zinc-900/"] .text-zinc-100,
 .site-light [class*="bg-zinc-900/"] .text-zinc-200,
 .site-light [class*="bg-zinc-900/"] .text-zinc-300,
-.site-light [class*="bg-zinc-900/"] .text-zinc-400 {
+.site-light [class*="bg-zinc-900/"] .text-zinc-400,
+.site-light .bg-zinc-900 .text-zinc-100,
+.site-light .bg-zinc-900 .text-zinc-200,
+.site-light .bg-zinc-900 .text-zinc-300,
+.site-light .bg-zinc-900 .text-zinc-400 {
   color: #14291F !important;
+}
+
+.site-light [class*="bg-zinc-900/"] h1,
+.site-light [class*="bg-zinc-900/"] h2,
+.site-light [class*="bg-zinc-900/"] h3,
+.site-light [class*="bg-zinc-900/"] h4,
+.site-light .bg-zinc-900 h1,
+.site-light .bg-zinc-900 h2,
+.site-light .bg-zinc-900 h3,
+.site-light .bg-zinc-900 h4 {
+  color: #14291F !important;
+}
+
+.site-light [class*="bg-zinc-900/"] p,
+.site-light .bg-zinc-900 p {
+  color: #3F554B !important;
+}
+
+.site-light [class*="bg-zinc-900/"] li,
+.site-light .bg-zinc-900 li {
+  color: #2D4137 !important;
 }
 
 /* Footer copy is intentionally white on the deep green footer surface. */
@@ -188,6 +232,115 @@ body {
 .admin-shell .bg-zinc-900 {
   background-color: #FFFFFF !important;
   border-color: rgba(20, 41, 31, 0.12) !important;
+}
+
+/* Admin Table Thead, Rows, and Data Elements */
+.admin-shell thead,
+.admin-shell thead.bg-zinc-950,
+.admin-shell .bg-zinc-950 thead {
+  background-color: #0E6049 !important;
+  color: #FFFFFF !important;
+}
+
+.admin-shell thead th {
+  color: #FFFFFF !important;
+}
+
+.admin-shell tbody tr {
+  border-color: rgba(20, 41, 31, 0.08) !important;
+}
+
+.admin-shell tbody tr:hover {
+  background-color: #F3ECE0 !important;
+}
+
+.admin-shell tbody td {
+  color: #14291F !important;
+}
+
+.admin-shell tbody td .text-zinc-400 {
+  color: #4A6356 !important;
+}
+
+.admin-shell tbody td .text-zinc-100,
+.admin-shell tbody td .text-zinc-200 {
+  color: #14291F !important;
+}
+
+.admin-shell input,
+.admin-shell select,
+.admin-shell textarea {
+  background-color: #FFFFFF !important;
+  color: #14291F !important;
+  border-color: rgba(20, 41, 31, 0.2) !important;
+}
+
+.admin-shell input::placeholder,
+.admin-shell textarea::placeholder {
+  color: #78847B !important;
+}
+
+/* Admin Calendar Specific Overrides */
+.admin-shell [class*="min-h-24"] {
+  background-color: #FFFFFF !important;
+  border-color: rgba(20, 41, 31, 0.12) !important;
+}
+
+.admin-shell [class*="min-h-24"] span {
+  color: #14291F !important;
+  font-weight: 700;
+}
+
+.admin-shell [class*="min-h-24"].border-gold-500\/50,
+.admin-shell [class*="min-h-24"].bg-gold-500\/10 {
+  background-color: #FEF3EE !important;
+  border-color: #F4775D !important;
+}
+
+.admin-shell [class*="min-h-24"].border-gold-500\/50 span,
+.admin-shell [class*="min-h-24"].bg-gold-500\/10 span {
+  color: #D95E47 !important;
+}
+
+.admin-shell [class*="min-h-24"] .bg-zinc-900 {
+  background-color: #0E6049 !important;
+  color: #FFFFFF !important;
+  border-color: transparent !important;
+}
+
+/* Admin Quick Estimator Card Specific Overrides */
+.admin-shell .bg-gradient-to-r.from-zinc-950 {
+  background: #FFFFFF !important;
+  border-color: rgba(20, 41, 31, 0.15) !important;
+  box-shadow: 0 10px 25px -5px rgba(20, 41, 31, 0.05) !important;
+}
+
+.admin-shell .bg-gradient-to-r.from-zinc-950 h3,
+.admin-shell .bg-gradient-to-r.from-zinc-950 h3 span {
+  color: #14291F !important;
+}
+
+.admin-shell .bg-gradient-to-r.from-zinc-950 label {
+  color: #3F554B !important;
+}
+
+.admin-shell .bg-gradient-to-r.from-zinc-950 input {
+  background-color: #FBF7ED !important;
+  color: #14291F !important;
+  border-color: #E3DCCC !important;
+}
+
+.admin-shell .bg-gradient-to-r.from-zinc-950 .p-4.rounded-xl {
+  background: #0E6049 !important;
+  border-color: transparent !important;
+}
+
+.admin-shell .bg-gradient-to-r.from-zinc-950 .p-4.rounded-xl span:first-child {
+  color: #D6E8DF !important;
+}
+
+.admin-shell .bg-gradient-to-r.from-zinc-950 .p-4.rounded-xl span:last-child {
+  color: #FFFFFF !important;
 }
 
 .admin-shell header {

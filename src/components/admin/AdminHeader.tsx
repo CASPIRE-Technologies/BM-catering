@@ -3,6 +3,8 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import { Menu, LogOut, ShieldCheck, User } from "lucide-react";
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { useLanguage } from "@/lib/language-context";
 
 interface AdminHeaderProps {
   onToggleSidebar: () => void;
@@ -10,6 +12,7 @@ interface AdminHeaderProps {
 
 export function AdminHeader({ onToggleSidebar }: AdminHeaderProps) {
   const router = useRouter();
+  const { t } = useLanguage();
 
   const handleLogout = async () => {
     try {
@@ -33,19 +36,22 @@ export function AdminHeader({ onToggleSidebar }: AdminHeaderProps) {
         </button>
         <div className="hidden sm:flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span className="text-xs text-zinc-400 font-medium">B.M Catering Operations • Sri Lanka (LKR)</span>
+          <span className="text-xs text-zinc-400 font-medium">{t.admin.statusOperations}</span>
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3 sm:gap-4">
+        {/* Language Switcher for Admin */}
+        <LanguageSwitcher />
+
         {/* User Info Badge */}
         <div className="flex items-center gap-2.5 bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-1.5">
           <div className="w-6 h-6 rounded-lg bg-gold-500/20 text-gold-400 flex items-center justify-center">
             <User className="w-3.5 h-3.5" />
           </div>
           <div className="text-left hidden sm:block">
-            <p className="text-xs font-semibold text-zinc-200 leading-none">Management</p>
-            <p className="text-[10px] text-gold-400 font-medium leading-none mt-1">Super Admin</p>
+            <p className="text-xs font-semibold text-zinc-200 leading-none">{t.admin.management}</p>
+            <p className="text-[10px] text-gold-400 font-medium leading-none mt-1">{t.admin.superAdmin}</p>
           </div>
         </div>
 
@@ -56,7 +62,7 @@ export function AdminHeader({ onToggleSidebar }: AdminHeaderProps) {
           title="Sign Out"
         >
           <LogOut className="w-4 h-4" />
-          <span className="hidden sm:inline">Logout</span>
+          <span className="hidden sm:inline">{t.admin.logout}</span>
         </button>
       </div>
     </header>

@@ -290,6 +290,31 @@ export const translations = {
       chat: "Chat on WhatsApp",
       defaultMsg: "Hello B.M Catering! I would like to inquire about event catering and equipment rentals.",
     },
+
+    // Admin Console
+    admin: {
+      portalSubtitle: "Admin Console",
+      statusOperations: "B.M Catering Operations • Sri Lanka (LKR)",
+      superAdmin: "Super Admin",
+      management: "Management",
+      logout: "Logout",
+      viewPublicSite: "View Public Website",
+      nav: {
+        dashboard: "Dashboard Overview",
+        calendar: "Event Calendar",
+        inventory: "Inventory Management",
+        bookings: "Bookings & Enquiries",
+        catering: "Catering Management",
+        lighting: "Lighting & Decor",
+        customers: "Customers CRM",
+        payments: "Income & Payments",
+        expenses: "Expenses Tracker",
+        reports: "Financial Reports",
+        gallery: "Gallery Management",
+        content: "Website Content CMS",
+        settings: "System Settings",
+      },
+    },
   },
 
   si: {
@@ -580,6 +605,31 @@ export const translations = {
       support: "ක්ෂණික සේවය",
       chat: "වට්ස්ඇප් මඟින් අමතන්න",
       defaultMsg: "ආයුබෝවන් B.M Catering! මට උත්සව ආහාර සහ උපකරණ කුලියට ගැනීම පිළිබඳ විස්තර දැනගැනීමට අවශ්‍යයි.",
+    },
+
+    // Admin Console
+    admin: {
+      portalSubtitle: "පරිපාලන පාලක පුවරුව",
+      statusOperations: "B.M කේටරින් මෙහෙයුම් • ශ්‍රී ලංකා (LKR)",
+      superAdmin: "ප්‍රධාන පරිපාලක",
+      management: "කළමනාකාරීත්වය",
+      logout: "පිටවීම",
+      viewPublicSite: "ප්‍රධාන වෙබ් අඩවියට",
+      nav: {
+        dashboard: "සාරාංශ පුවරුව",
+        calendar: "උත්සව දින දර්ශනය",
+        inventory: "උපකරණ සංචිතය",
+        bookings: "වෙන්කිරීම් සහ ඇණවුම්",
+        catering: "ආහාර සහ මෙනු කළමනාකරණය",
+        lighting: "ආලෝකකරණය සහ සැරසිලි",
+        customers: "පාරිභෝගික තොරතුරු (CRM)",
+        payments: "ආදායම් සහ ගෙවීම්",
+        expenses: "වියදම් සටහන",
+        reports: "මූල්‍ය වාර්තා",
+        gallery: "ඡායාරූප එකතුව",
+        content: "වෙබ් අඩවි අන්තර්ගතය",
+        settings: "පද්ධති සැකසුම්",
+      },
     },
   },
 } as const;

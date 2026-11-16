@@ -32,25 +32,29 @@ export function HomeClient({ services, featuredRentals, galleryImages }: HomeCli
     <div className="site-light space-y-24 pb-20">
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[calc(100vh-142px)] flex items-center overflow-hidden bg-[#FBF7ED] pt-12 sm:pt-16 pb-14 sm:pb-20">
-        <div className="absolute right-[-10%] top-[8%] w-[54vw] h-[54vw] max-w-[740px] max-h-[740px] rounded-full bg-[#F9E9B5]/70 hidden md:block" />
-        
-        {/* Main Banquet Circle */}
-        <div className="absolute right-[2%] lg:right-[4%] top-[14%] w-[40vw] h-[40vw] max-w-[530px] max-h-[530px] rounded-full border-[18px] border-[#F6D879] shadow-[0_30px_80px_rgba(126,91,35,0.18)] overflow-hidden hidden md:block">
+        {/* Full-bleed Mobile Hero Background */}
+        <div className="absolute inset-0 md:hidden pointer-events-none overflow-hidden z-0">
           <Image
-            src="/images/hero-banquet-night.jpg"
-            alt="BM Cook & Catering Luxury Night Banquet with Fairy Light Canopy"
+            src="/images/hero-mobile-bg.jpg"
+            alt="BM Cook & Catering Master Chef & Luxury Banquet"
             fill
             priority
-            className="object-cover object-center"
+            className="object-cover object-top"
           />
+          {/* Deep dark luxury gradient to ensure all text is crystal clear */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/75 to-black/45" />
+          <div className="absolute inset-0 bg-[#0E6049]/20 mix-blend-multiply" />
         </div>
 
-        {/* Second Visual: Master Chef Portrait - Positioned overlapping the bottom-right of the main circle */}
-        <div className="absolute right-[-1%] lg:right-[0%] bottom-[10%] w-[24vw] h-[24vw] max-w-[320px] max-h-[320px] hidden md:block z-20 pointer-events-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.3)]">
+        {/* Laptop / Desktop Visual: Replaced with the new gold-framed combined banquet & master chef visual */}
+        <div className="absolute right-[-10%] top-[8%] w-[54vw] h-[54vw] max-w-[740px] max-h-[740px] rounded-full bg-[#F9E9B5]/70 hidden md:block" />
+        
+        <div className="absolute right-[-4%] lg:right-[1%] top-[8%] lg:top-[6%] w-[48vw] h-[48vw] max-w-[620px] max-h-[620px] hidden md:block z-10 pointer-events-none">
           <Image
-            src="/images/chef-portrait-clean.png"
-            alt="BM Cook & Catering Master Chef"
+            src="/images/hero-desktop-combined-clean.png"
+            alt="BM Cook & Catering Luxury Night Banquet and Master Chef"
             fill
+            priority
             className="object-contain"
           />
         </div>
@@ -62,19 +66,13 @@ export function HomeClient({ services, featuredRentals, galleryImages }: HomeCli
 
         <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
           <div className="max-w-xl lg:max-w-2xl text-left space-y-6 sm:space-y-7">
-          {/* Trust Badge */}
-          <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-[#DCEFE3] text-[#0E6049] text-sm font-bold tracking-wide">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#F4775D]" />
-            <span>{t.hero.trustBadge}</span>
-          </div>
-
           {/* Main Title */}
-          <h1 className="text-3xl leading-[1.08] sm:text-5xl lg:text-6xl font-serif font-bold tracking-[-0.03em] text-[#14291F]">
-            {t.hero.titlePre} <span className="text-gold-gradient italic">{t.hero.titleHighlight}</span>
+          <h1 className={`${language === "si" ? "text-3xl sm:text-5xl lg:text-[3.5rem] leading-[1.3] tracking-normal" : "text-3xl sm:text-5xl lg:text-[3.65rem] leading-[1.18] tracking-[-0.02em]"} font-serif font-bold text-white md:text-[#14291F] drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] md:drop-shadow-none max-w-xl lg:max-w-2xl`}>
+            {t.hero.titlePre} <span className="text-[#F6D879] md:text-gold-gradient not-italic font-sans font-extrabold tracking-normal inline-block">{t.hero.titleHighlight}</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-base sm:text-xl text-[#5E6C63] max-w-xl font-medium leading-relaxed">
+          <p className="text-base sm:text-xl text-[#F5FFFA] md:text-[#5E6C63] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] md:drop-shadow-none max-w-xl font-medium leading-relaxed">
             {t.hero.subtitle}
           </p>
 
@@ -82,70 +80,50 @@ export function HomeClient({ services, featuredRentals, galleryImages }: HomeCli
           <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-3 sm:gap-4 pt-1 sm:pt-2">
             <Link
               href="/book"
-              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-bold bg-[#F4775D] text-white hover:bg-[#E96750] shadow-[0_12px_24px_rgba(244,119,93,0.24)] transition flex items-center justify-center gap-2 group"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-bold bg-[#F4775D] text-white hover:bg-[#E96750] shadow-[0_12px_24px_rgba(244,119,93,0.35)] transition flex items-center justify-center gap-2 group"
             >
               <span>{t.hero.bookCta}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
             </Link>
             <Link
               href="/rentals"
-              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-semibold tracking-wide bg-white text-[#14291F] hover:bg-[#F1EBDD] border border-[#E3DCCC] transition flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-sm sm:text-base font-semibold tracking-wide bg-white/95 md:bg-white text-[#14291F] hover:bg-[#F1EBDD] border border-white/60 md:border-[#E3DCCC] backdrop-blur-md md:backdrop-blur-none transition flex items-center justify-center gap-2 shadow-lg md:shadow-none"
             >
               <Tent className="w-4 h-4 text-[#0E6049]" />
               <span>{t.hero.rentalsCta}</span>
             </Link>
           </div>
 
-          {/* Mobile Key Visual: Dual Overlapping Visuals */}
-          <div className="md:hidden relative w-full max-w-sm mx-auto h-[260px] my-4">
-            <div className="absolute left-2 top-0 w-52 h-52 rounded-full border-[8px] border-[#F6D879] overflow-hidden shadow-lg">
-              <Image
-                src="/images/hero-banquet-night.jpg"
-                alt="BM Cook & Catering Luxury Night Banquet with Fairy Light Canopy"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="absolute right-0 bottom-0 w-44 h-44 drop-shadow-[0_15px_30px_rgba(0,0,0,0.25)] z-10">
-              <Image
-                src="/images/chef-portrait-clean.png"
-                alt="BM Cook & Catering Master Chef"
-                fill
-                className="object-contain"
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-5 sm:gap-6 max-w-3xl pt-7 sm:pt-8 border-t border-[#E3DCCC]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-5 sm:gap-6 max-w-3xl pt-7 sm:pt-8 border-t border-white/25 md:border-[#E3DCCC]">
             <div>
-              <p className="text-2xl sm:text-3xl font-serif font-bold text-[#0E6049]">
+              <p className="text-2xl sm:text-3xl font-serif font-bold text-[#F6D879] md:text-[#0E6049] drop-shadow-md md:drop-shadow-none">
                 {t.hero.stats.yearsVal}
               </p>
-              <p className="text-xs text-[#5E6C63] uppercase tracking-wider mt-1">
+              <p className="text-xs text-zinc-300 md:text-[#5E6C63] uppercase tracking-wider mt-1 drop-shadow-sm md:drop-shadow-none font-medium">
                 {t.hero.stats.yearsLabel}
               </p>
             </div>
             <div>
-              <p className="text-2xl sm:text-3xl font-serif font-bold text-[#0E6049]">
+              <p className="text-2xl sm:text-3xl font-serif font-bold text-[#F6D879] md:text-[#0E6049] drop-shadow-md md:drop-shadow-none">
                 {t.hero.stats.eventsVal}
               </p>
-              <p className="text-xs text-[#5E6C63] uppercase tracking-wider mt-1">
+              <p className="text-xs text-zinc-300 md:text-[#5E6C63] uppercase tracking-wider mt-1 drop-shadow-sm md:drop-shadow-none font-medium">
                 {t.hero.stats.eventsLabel}
               </p>
             </div>
             <div>
-              <p className="text-2xl sm:text-3xl font-serif font-bold text-[#0E6049]">
+              <p className="text-2xl sm:text-3xl font-serif font-bold text-[#F6D879] md:text-[#0E6049] drop-shadow-md md:drop-shadow-none">
                 {t.hero.stats.halalVal}
               </p>
-              <p className="text-xs text-[#5E6C63] uppercase tracking-wider mt-1">
+              <p className="text-xs text-zinc-300 md:text-[#5E6C63] uppercase tracking-wider mt-1 drop-shadow-sm md:drop-shadow-none font-medium">
                 {t.hero.stats.halalLabel}
               </p>
             </div>
             <div>
-              <p className="text-2xl sm:text-3xl font-serif font-bold text-[#0E6049]">
+              <p className="text-2xl sm:text-3xl font-serif font-bold text-[#F6D879] md:text-[#0E6049] drop-shadow-md md:drop-shadow-none">
                 {t.hero.stats.quoteVal}
               </p>
-              <p className="text-xs text-[#5E6C63] uppercase tracking-wider mt-1">
+              <p className="text-xs text-zinc-300 md:text-[#5E6C63] uppercase tracking-wider mt-1 drop-shadow-sm md:drop-shadow-none font-medium">
                 {t.hero.stats.quoteLabel}
               </p>
             </div>

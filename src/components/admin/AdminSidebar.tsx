@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "@/lib/language-context";
 import {
   LayoutDashboard,
   Boxes,
@@ -28,21 +29,22 @@ interface AdminSidebarProps {
 
 export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
   const pathname = usePathname();
+  const { t } = useLanguage();
 
   const navItems = [
-    { href: "/admin", label: "Dashboard Overview", icon: LayoutDashboard },
-    { href: "/admin/calendar", label: "Event Calendar", icon: Calendar },
-    { href: "/admin/inventory", label: "Inventory Management", icon: Boxes },
-    { href: "/admin/bookings", label: "Bookings & Enquiries", icon: CalendarDays },
-    { href: "/admin/catering", label: "Catering Management", icon: UtensilsCrossed },
-    { href: "/admin/lighting", label: "Lighting & Decor", icon: Sparkles },
-    { href: "/admin/customers", label: "Customers CRM", icon: Users },
-    { href: "/admin/payments", label: "Income & Payments", icon: CreditCard },
-    { href: "/admin/expenses", label: "Expenses Tracker", icon: Receipt },
-    { href: "/admin/reports", label: "Financial Reports", icon: FileBarChart },
-    { href: "/admin/gallery", label: "Gallery Management", icon: Images },
-    { href: "/admin/content", label: "Website Content CMS", icon: Globe },
-    { href: "/admin/settings", label: "System Settings", icon: Settings },
+    { href: "/admin", label: t.admin.nav.dashboard, icon: LayoutDashboard },
+    { href: "/admin/calendar", label: t.admin.nav.calendar, icon: Calendar },
+    { href: "/admin/inventory", label: t.admin.nav.inventory, icon: Boxes },
+    { href: "/admin/bookings", label: t.admin.nav.bookings, icon: CalendarDays },
+    { href: "/admin/catering", label: t.admin.nav.catering, icon: UtensilsCrossed },
+    { href: "/admin/lighting", label: t.admin.nav.lighting, icon: Sparkles },
+    { href: "/admin/customers", label: t.admin.nav.customers, icon: Users },
+    { href: "/admin/payments", label: t.admin.nav.payments, icon: CreditCard },
+    { href: "/admin/expenses", label: t.admin.nav.expenses, icon: Receipt },
+    { href: "/admin/reports", label: t.admin.nav.reports, icon: FileBarChart },
+    { href: "/admin/gallery", label: t.admin.nav.gallery, icon: Images },
+    { href: "/admin/content", label: t.admin.nav.content, icon: Globe },
+    { href: "/admin/settings", label: t.admin.nav.settings, icon: Settings },
   ];
 
   return (
@@ -71,7 +73,7 @@ export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
                 className="w-[150px] h-auto object-contain"
               />
               <p className="text-[9px] uppercase tracking-[0.2em] text-gold-500 font-semibold">
-                Admin Console
+                {t.admin.portalSubtitle}
               </p>
             </div>
           </Link>
@@ -118,7 +120,7 @@ export function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
             target="_blank"
             className="flex items-center justify-between px-3 py-2.5 rounded-xl text-xs text-zinc-400 hover:text-gold-300 hover:bg-zinc-900 transition border border-zinc-800"
           >
-            <span>View Public Website</span>
+            <span>{t.admin.viewPublicSite}</span>
             <ExternalLink className="w-3.5 h-3.5 text-zinc-500" />
           </Link>
         </div>
