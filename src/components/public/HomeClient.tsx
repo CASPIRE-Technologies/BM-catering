@@ -46,15 +46,26 @@ export function HomeClient({ services, featuredRentals, galleryImages }: HomeCli
           <div className="absolute inset-0 bg-[#0E6049]/20 mix-blend-multiply" />
         </div>
 
-        {/* Laptop / Desktop Visual: Replaced with the new gold-framed combined banquet & master chef visual */}
+        {/* Laptop / Desktop Visual: Original Two Elements (Banquet Circle + Overlapping Master Chef) */}
         <div className="absolute right-[-10%] top-[8%] w-[54vw] h-[54vw] max-w-[740px] max-h-[740px] rounded-full bg-[#F9E9B5]/70 hidden md:block" />
         
-        <div className="absolute right-[-4%] lg:right-[1%] top-[8%] lg:top-[6%] w-[48vw] h-[48vw] max-w-[620px] max-h-[620px] hidden md:block z-10 pointer-events-none">
+        {/* Main Banquet Circle */}
+        <div className="absolute right-[2%] lg:right-[4%] top-[14%] w-[40vw] h-[40vw] max-w-[530px] max-h-[530px] rounded-full border-[18px] border-[#F6D879] shadow-[0_30px_80px_rgba(126,91,35,0.18)] overflow-hidden hidden md:block">
           <Image
-            src="/images/hero-desktop-combined-clean.png"
-            alt="BM Cook & Catering Luxury Night Banquet and Master Chef"
+            src="/images/hero-banquet-night.jpg"
+            alt="BM Cook & Catering Luxury Night Banquet with Fairy Light Canopy"
             fill
             priority
+            className="object-cover object-center"
+          />
+        </div>
+
+        {/* Second Visual: Master Chef Portrait - Positioned overlapping the bottom-right of the main circle */}
+        <div className="absolute right-[-1%] lg:right-[0%] bottom-[10%] w-[24vw] h-[24vw] max-w-[320px] max-h-[320px] hidden md:block z-20 pointer-events-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.3)]">
+          <Image
+            src="/images/chef-portrait-clean.png"
+            alt="BM Cook & Catering Master Chef"
+            fill
             className="object-contain"
           />
         </div>
