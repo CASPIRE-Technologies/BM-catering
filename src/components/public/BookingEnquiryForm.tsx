@@ -190,33 +190,33 @@ export function BookingEnquiryForm({ availableItems }: { availableItems: any[] }
 
   if (submissionSuccess) {
     return (
-      <div className="max-w-3xl mx-auto rounded-3xl bg-zinc-900/60 border border-gold-500/40 p-8 sm:p-12 text-center space-y-6 shadow-2xl">
-        <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 mx-auto flex items-center justify-center">
+      <div className="max-w-3xl mx-auto rounded-3xl bg-[#FBF7ED] border border-[#E3DCCC] p-8 sm:p-12 text-center space-y-6 shadow-sm">
+        <div className="w-16 h-16 rounded-full bg-[#DCEFE3] text-[#0E6049] border border-[#0E6049]/20 mx-auto flex items-center justify-center">
           <CheckCircle2 className="w-8 h-8" />
         </div>
 
         <div className="space-y-2">
-          <span className="text-xs uppercase tracking-[0.2em] font-semibold text-gold-400">
+          <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#F4775D]">
             Enquiry Received
           </span>
-          <h2 className="text-3xl font-serif font-bold text-white">
+          <h2 className="text-3xl font-serif font-bold text-[#14291F]">
             Thank You, {formData.customerName}!
           </h2>
-          <p className="text-sm text-zinc-300 max-w-lg mx-auto">
+          <p className="text-sm text-[#5E6C63] max-w-lg mx-auto">
             Your booking request has been registered under reference:
           </p>
-          <div className="inline-block px-4 py-2 rounded-xl bg-zinc-950 border border-gold-500/50 font-mono text-lg font-bold text-gold-300 tracking-wider">
+          <div className="inline-block px-5 py-2.5 rounded-xl bg-white border-2 border-[#F6D879] font-mono text-xl font-bold text-[#0E6049] shadow-sm tracking-wider">
             {submissionSuccess.bookingNumber}
           </div>
         </div>
 
         {/* Workflow note */}
-        <div className="p-4 rounded-xl bg-zinc-950/80 border border-zinc-800 text-left text-xs text-zinc-400 space-y-2 max-w-xl mx-auto">
-          <div className="flex items-center gap-2 text-gold-400 font-semibold">
-            <ShieldAlert className="w-4 h-4" />
+        <div className="p-5 rounded-2xl bg-[#0E6049] border border-[#0B4D3B] text-left text-xs text-white/90 space-y-2 max-w-xl mx-auto shadow-md">
+          <div className="flex items-center gap-2 text-[#F6D879] font-bold text-sm">
+            <ShieldAlert className="w-4 h-4 text-[#F6D879]" />
             <span>Admin-Approved Booking Workflow:</span>
           </div>
-          <p>
+          <p className="leading-relaxed text-emerald-50">
             As per B.M Catering policy, inventory is not automatically reserved until dates and logistics are verified by our team. We will review warehouse stock for your dates and send an official itemized quotation to your WhatsApp ({formData.whatsapp || formData.phone}).
           </p>
         </div>
@@ -228,14 +228,14 @@ export function BookingEnquiryForm({ availableItems }: { availableItems: any[] }
             )}.`}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-emerald-600 hover:bg-emerald-500 text-white transition flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#0E6049] hover:bg-[#0B4D3B] text-white transition flex items-center justify-center gap-2 shadow-sm"
           >
             <MessageCircle className="w-4 h-4 fill-current" />
             <span>Notify Management via WhatsApp</span>
           </a>
           <Link
             href="/"
-            className="w-full sm:w-auto px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-800 transition"
+            className="w-full sm:w-auto px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white hover:bg-[#F3ECE0] text-[#14291F] border border-[#E3DCCC] transition shadow-sm"
           >
             Return to Homepage
           </Link>
