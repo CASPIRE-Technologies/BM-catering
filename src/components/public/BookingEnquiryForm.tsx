@@ -190,33 +190,76 @@ export function BookingEnquiryForm({ availableItems }: { availableItems: any[] }
 
   if (submissionSuccess) {
     return (
-      <div className="max-w-3xl mx-auto rounded-3xl bg-[#FBF7ED] border border-[#E3DCCC] p-8 sm:p-12 text-center space-y-6 shadow-sm">
-        <div className="w-16 h-16 rounded-full bg-[#DCEFE3] text-[#0E6049] border border-[#0E6049]/20 mx-auto flex items-center justify-center">
+      <div
+        style={{
+          backgroundColor: "#FBF7ED",
+          borderColor: "#E3DCCC",
+          color: "#14291F",
+        }}
+        className="max-w-3xl mx-auto rounded-3xl border p-8 sm:p-12 text-center space-y-6 shadow-sm"
+      >
+        <div
+          style={{
+            backgroundColor: "#DCEFE3",
+            color: "#0E6049",
+            borderColor: "rgba(14, 96, 73, 0.2)",
+          }}
+          className="w-16 h-16 rounded-full border mx-auto flex items-center justify-center"
+        >
           <CheckCircle2 className="w-8 h-8" />
         </div>
 
         <div className="space-y-2">
-          <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#F4775D]">
+          <span
+            style={{ color: "#F4775D" }}
+            className="text-xs uppercase tracking-[0.2em] font-semibold"
+          >
             Enquiry Received
           </span>
-          <h2 className="text-3xl font-serif font-bold text-[#14291F]">
+          <h2
+            style={{ color: "#14291F" }}
+            className="text-3xl font-serif font-bold"
+          >
             Thank You, {formData.customerName}!
           </h2>
-          <p className="text-sm text-[#5E6C63] max-w-lg mx-auto">
+          <p
+            style={{ color: "#5E6C63" }}
+            className="text-sm max-w-lg mx-auto font-medium"
+          >
             Your booking request has been registered under reference:
           </p>
-          <div className="inline-block px-5 py-2.5 rounded-xl bg-white border-2 border-[#F6D879] font-mono text-xl font-bold text-[#0E6049] shadow-sm tracking-wider">
+          <div
+            style={{
+              backgroundColor: "#FFFFFF",
+              borderColor: "#F6D879",
+              color: "#0E6049",
+            }}
+            className="inline-block px-5 py-2.5 rounded-xl border-2 font-mono text-xl font-bold shadow-sm tracking-wider"
+          >
             {submissionSuccess.bookingNumber}
           </div>
         </div>
 
         {/* Workflow note */}
-        <div className="p-5 rounded-2xl bg-[#0E6049] border border-[#0B4D3B] text-left text-xs text-white/90 space-y-2 max-w-xl mx-auto shadow-md">
-          <div className="flex items-center gap-2 text-[#F6D879] font-bold text-sm">
+        <div
+          style={{
+            backgroundColor: "#0E6049",
+            borderColor: "#0B4D3B",
+            color: "#FFFFFF",
+          }}
+          className="p-5 rounded-2xl border text-left text-xs space-y-2 max-w-xl mx-auto shadow-md"
+        >
+          <div
+            style={{ color: "#F6D879" }}
+            className="flex items-center gap-2 font-bold text-sm"
+          >
             <ShieldAlert className="w-4 h-4 text-[#F6D879]" />
             <span>Admin-Approved Booking Workflow:</span>
           </div>
-          <p className="leading-relaxed text-emerald-50">
+          <p
+            style={{ color: "#F3F7F5" }}
+            className="leading-relaxed font-normal text-xs"
+          >
             As per B.M Catering policy, inventory is not automatically reserved until dates and logistics are verified by our team. We will review warehouse stock for your dates and send an official itemized quotation to your WhatsApp ({formData.whatsapp || formData.phone}).
           </p>
         </div>
@@ -228,14 +271,23 @@ export function BookingEnquiryForm({ availableItems }: { availableItems: any[] }
             )}.`}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#0E6049] hover:bg-[#0B4D3B] text-white transition flex items-center justify-center gap-2 shadow-sm"
+            style={{
+              backgroundColor: "#0E6049",
+              color: "#FFFFFF",
+            }}
+            className="w-full sm:w-auto px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-sm hover:brightness-110"
           >
             <MessageCircle className="w-4 h-4 fill-current" />
             <span>Notify Management via WhatsApp</span>
           </a>
           <Link
             href="/"
-            className="w-full sm:w-auto px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white hover:bg-[#F3ECE0] text-[#14291F] border border-[#E3DCCC] transition shadow-sm"
+            style={{
+              backgroundColor: "#FFFFFF",
+              color: "#14291F",
+              borderColor: "#E3DCCC",
+            }}
+            className="w-full sm:w-auto px-6 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider border transition shadow-sm hover:bg-[#F3ECE0]"
           >
             Return to Homepage
           </Link>
