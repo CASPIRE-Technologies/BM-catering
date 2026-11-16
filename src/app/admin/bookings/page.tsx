@@ -266,41 +266,41 @@ export default function AdminBookingsPage() {
 
       {/* Booking Details Modal / Drawer */}
       {activeBooking && (
-        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="w-full max-w-4xl bg-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="w-full max-w-4xl bg-white border border-[#E3DCCC] rounded-3xl p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto shadow-2xl">
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
+            <div className="flex items-center justify-between border-b border-[#E3DCCC] pb-4">
               <div>
-                <span className="text-xs uppercase tracking-widest text-gold-400 font-bold">
+                <span className="text-xs uppercase tracking-widest text-[#0E6049] font-bold">
                   Booking Specification
                 </span>
-                <h3 className="font-serif text-2xl font-bold text-white mt-0.5">
+                <h3 className="font-serif text-2xl font-bold text-[#14291F] mt-0.5">
                   {activeBooking.bookingNumber} • {activeBooking.eventType}
                 </h3>
               </div>
               <button
                 onClick={() => setActiveBooking(null)}
-                className="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-900"
+                className="w-9 h-9 rounded-full bg-[#F3ECE0] hover:bg-[#E8DFCE] text-[#14291F] flex items-center justify-center font-bold transition"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Status Transition Actions */}
-            <div className="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+            <div className="p-4 rounded-2xl bg-[#FBF7ED] border border-[#E3DCCC] flex flex-wrap items-center justify-between gap-4">
               <div>
-                <span className="text-xs text-zinc-400 block">Current Status</span>
+                <span className="text-xs text-[#5E6C63] font-medium block">Current Status</span>
                 <span className={`inline-block mt-1 px-3 py-1 rounded-full text-xs font-bold border ${getBookingStatusBadge(activeBooking.status).color}`}>
                   {getBookingStatusBadge(activeBooking.status).label}
                 </span>
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
-                <span className="text-xs text-zinc-400 mr-2">Change Status:</span>
+                <span className="text-xs text-[#5E6C63] font-medium mr-2">Change Status:</span>
                 {activeBooking.status === "ENQUIRY" && (
                   <button
                     onClick={() => handleUpdateStatus(activeBooking.id, "QUOTATION_SENT")}
-                    className="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold transition"
+                    className="px-3.5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold transition shadow-sm"
                   >
                     Send Quotation
                   </button>
@@ -308,7 +308,7 @@ export default function AdminBookingsPage() {
                 {activeBooking.status !== "CONFIRMED" && (
                   <button
                     onClick={() => handleUpdateStatus(activeBooking.id, "CONFIRMED")}
-                    className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition flex items-center gap-1.5"
+                    className="px-3.5 py-2 rounded-xl bg-[#0E6049] hover:bg-[#0B4D3B] text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
                   >
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Confirm Booking</span>
@@ -317,7 +317,7 @@ export default function AdminBookingsPage() {
                 {activeBooking.status === "CONFIRMED" && (
                   <button
                     onClick={() => handleUpdateStatus(activeBooking.id, "IN_PROGRESS")}
-                    className="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold transition flex items-center gap-1.5"
+                    className="px-3.5 py-2 rounded-xl bg-cyan-700 hover:bg-cyan-600 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
                   >
                     <Truck className="w-3.5 h-3.5" />
                     <span>Mark In Progress</span>
@@ -326,7 +326,7 @@ export default function AdminBookingsPage() {
                 {activeBooking.status === "IN_PROGRESS" && (
                   <button
                     onClick={() => handleUpdateStatus(activeBooking.id, "COMPLETED")}
-                    className="px-3 py-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold transition flex items-center gap-1.5"
+                    className="px-3.5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm"
                   >
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>Mark Completed</span>
@@ -335,7 +335,7 @@ export default function AdminBookingsPage() {
                 {activeBooking.status !== "CANCELLED" && (
                   <button
                     onClick={() => handleUpdateStatus(activeBooking.id, "CANCELLED")}
-                    className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-rose-600 text-zinc-300 hover:text-white text-xs font-semibold transition"
+                    className="px-3.5 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-bold transition"
                   >
                     Cancel Booking
                   </button>
@@ -345,50 +345,50 @@ export default function AdminBookingsPage() {
 
             {/* Customer & Event Details */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-              <div className="p-4 rounded-xl bg-zinc-900/40 border border-zinc-800 space-y-2">
-                <span className="text-zinc-500 uppercase tracking-wider block font-semibold">Customer Contact</span>
-                <p className="text-sm font-bold text-zinc-100">{activeBooking.customer?.name}</p>
-                <p className="text-zinc-300">Phone: {activeBooking.customer?.phone}</p>
-                <p className="text-zinc-300">WhatsApp: {activeBooking.customer?.whatsapp || "-"}</p>
-                <p className="text-zinc-300">Email: {activeBooking.customer?.email || "-"}</p>
+              <div className="p-4 rounded-xl bg-[#FBF7ED] border border-[#E3DCCC] space-y-2">
+                <span className="text-[#0E6049] uppercase tracking-wider block font-bold">Customer Contact</span>
+                <p className="text-sm font-bold text-[#14291F]">{activeBooking.customer?.name}</p>
+                <p className="text-[#14291F]"><span className="text-[#5E6C63] font-medium">Phone:</span> {activeBooking.customer?.phone}</p>
+                <p className="text-[#14291F]"><span className="text-[#5E6C63] font-medium">WhatsApp:</span> {activeBooking.customer?.whatsapp || "-"}</p>
+                <p className="text-[#14291F]"><span className="text-[#5E6C63] font-medium">Email:</span> {activeBooking.customer?.email || "-"}</p>
               </div>
 
-              <div className="p-4 rounded-xl bg-zinc-900/40 border border-zinc-800 space-y-2">
-                <span className="text-zinc-500 uppercase tracking-wider block font-semibold">Event Parameters</span>
-                <p className="text-sm font-bold text-zinc-100">{activeBooking.eventType}</p>
-                <p className="text-zinc-300">Location: {activeBooking.eventLocation}</p>
-                <p className="text-zinc-300">Date Range: {formatDate(activeBooking.startDate)} to {formatDate(activeBooking.endDate)}</p>
-                <p className="text-zinc-300">Guests: {activeBooking.guestCount || "Not specified"}</p>
+              <div className="p-4 rounded-xl bg-[#FBF7ED] border border-[#E3DCCC] space-y-2">
+                <span className="text-[#0E6049] uppercase tracking-wider block font-bold">Event Parameters</span>
+                <p className="text-sm font-bold text-[#14291F]">{activeBooking.eventType}</p>
+                <p className="text-[#14291F]"><span className="text-[#5E6C63] font-medium">Location:</span> {activeBooking.eventLocation}</p>
+                <p className="text-[#14291F]"><span className="text-[#5E6C63] font-medium">Date Range:</span> {formatDate(activeBooking.startDate)} to {formatDate(activeBooking.endDate)}</p>
+                <p className="text-[#14291F]"><span className="text-[#5E6C63] font-medium">Guests:</span> {activeBooking.guestCount || "Not specified"}</p>
               </div>
             </div>
 
             {/* Multi-Service Financial Breakdown */}
-            <div className="p-5 rounded-2xl bg-zinc-900/60 border border-zinc-800 space-y-3">
-              <h4 className="font-serif font-bold text-sm text-gold-300">
+            <div className="p-5 rounded-2xl bg-[#0E6049] text-white space-y-3 shadow-md">
+              <h4 className="font-serif font-bold text-sm text-[#F6D879]">
                 Multi-Service Financial Breakdown
               </h4>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-                <div className="p-3 rounded-xl bg-zinc-950 border border-zinc-800">
-                  <span className="text-zinc-500 block">Catering</span>
-                  <span className="text-sm font-serif font-bold text-zinc-200 mt-1 block">
+                <div className="p-3.5 rounded-xl bg-white/10 border border-white/15">
+                  <span className="text-emerald-100 block font-medium">Catering</span>
+                  <span className="text-base font-serif font-bold text-white mt-1 block">
                     {formatCurrency(activeBooking.cateringAmount)}
                   </span>
                 </div>
-                <div className="p-3 rounded-xl bg-zinc-950 border border-zinc-800">
-                  <span className="text-zinc-500 block">Equipment Rentals</span>
-                  <span className="text-sm font-serif font-bold text-zinc-200 mt-1 block">
+                <div className="p-3.5 rounded-xl bg-white/10 border border-white/15">
+                  <span className="text-emerald-100 block font-medium">Equipment Rentals</span>
+                  <span className="text-base font-serif font-bold text-white mt-1 block">
                     {formatCurrency(activeBooking.rentalAmount)}
                   </span>
                 </div>
-                <div className="p-3 rounded-xl bg-zinc-950 border border-zinc-800">
-                  <span className="text-zinc-500 block">Lighting & Decor</span>
-                  <span className="text-sm font-serif font-bold text-zinc-200 mt-1 block">
+                <div className="p-3.5 rounded-xl bg-white/10 border border-white/15">
+                  <span className="text-emerald-100 block font-medium">Lighting & Decor</span>
+                  <span className="text-base font-serif font-bold text-white mt-1 block">
                     {formatCurrency(activeBooking.lightingAmount)}
                   </span>
                 </div>
-                <div className="p-3 rounded-xl bg-zinc-950 border border-gold-500/30">
-                  <span className="text-gold-400 block font-semibold">Combined Total</span>
-                  <span className="text-base font-serif font-bold text-gold-300 mt-1 block">
+                <div className="p-3.5 rounded-xl bg-black/25 border-2 border-[#F6D879]">
+                  <span className="text-[#F6D879] block font-bold">Combined Total</span>
+                  <span className="text-lg font-serif font-bold text-[#F6D879] mt-1 block">
                     {formatCurrency(activeBooking.totalAmount)}
                   </span>
                 </div>
@@ -398,13 +398,13 @@ export default function AdminBookingsPage() {
             {/* Assigned Rental Items & Dispatch Tracking */}
             {activeBooking.items && activeBooking.items.length > 0 && (
               <div className="space-y-3 text-xs">
-                <h4 className="font-serif font-bold text-sm text-zinc-100 flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-gold-400" />
+                <h4 className="font-serif font-bold text-sm text-[#14291F] flex items-center gap-2">
+                  <Truck className="w-4 h-4 text-[#0E6049]" />
                   <span>Assigned Equipment & Return Tracking</span>
                 </h4>
-                <div className="rounded-xl border border-zinc-800 overflow-hidden">
+                <div className="rounded-xl border border-[#E3DCCC] overflow-hidden">
                   <table className="w-full text-left">
-                    <thead className="bg-zinc-950 text-zinc-400 text-[10px] uppercase">
+                    <thead className="bg-[#0E6049] text-white text-[10px] uppercase font-bold">
                       <tr>
                         <th className="p-3">Equipment</th>
                         <th className="p-3 text-center">Qty</th>
@@ -414,24 +414,24 @@ export default function AdminBookingsPage() {
                         <th className="p-3 text-center">Actions</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-zinc-800 bg-zinc-900/40">
+                    <tbody className="divide-y divide-[#E3DCCC] bg-white">
                       {activeBooking.items.map((bi: any) => (
                         <tr key={bi.id}>
-                          <td className="p-3 font-semibold text-zinc-200">
+                          <td className="p-3 font-bold text-[#14291F]">
                             {bi.item?.name}
                           </td>
-                          <td className="p-3 text-center font-bold text-gold-300">
+                          <td className="p-3 text-center font-bold text-[#0E6049]">
                             {bi.quantity}
                           </td>
                           <td className="p-3">
-                            <span className="px-2 py-0.5 rounded bg-zinc-800 text-[10px] font-medium text-zinc-300">
+                            <span className="px-2.5 py-1 rounded-full bg-[#F3ECE0] text-[10px] font-bold text-[#14291F] border border-[#E3DCCC]">
                               {bi.dispatchStatus}
                             </span>
                           </td>
-                          <td className="p-3 text-center text-zinc-300">
+                          <td className="p-3 text-center text-[#14291F] font-semibold">
                             {bi.returnedQty || 0}
                           </td>
-                          <td className="p-3 text-center text-rose-400 font-semibold">
+                          <td className="p-3 text-center text-rose-600 font-bold">
                             {bi.damagedQuantity || 0}
                           </td>
                           <td className="p-3 text-center">
@@ -439,7 +439,7 @@ export default function AdminBookingsPage() {
                               {bi.dispatchStatus !== "DISPATCHED" && (
                                 <button
                                   onClick={() => handleDispatchUpdate(bi.id, bi.itemId, "DISPATCHED")}
-                                  className="px-2 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-[10px] text-zinc-300"
+                                  className="px-2.5 py-1 rounded-lg bg-[#0E6049] hover:bg-[#0B4D3B] text-white text-[10px] font-bold transition shadow-sm"
                                 >
                                   Dispatch
                                 </button>
@@ -447,7 +447,7 @@ export default function AdminBookingsPage() {
                               {bi.dispatchStatus === "DISPATCHED" && (
                                 <button
                                   onClick={() => handleDispatchUpdate(bi.id, bi.itemId, "RETURNED_FULL", bi.quantity, 0)}
-                                  className="px-2 py-1 rounded bg-emerald-600/30 text-emerald-300 hover:bg-emerald-600/50 text-[10px]"
+                                  className="px-2.5 py-1 rounded-lg bg-emerald-700 text-white hover:bg-emerald-800 text-[10px] font-bold transition shadow-sm"
                                 >
                                   Mark Full Return
                                 </button>
@@ -463,21 +463,25 @@ export default function AdminBookingsPage() {
             )}
 
             {/* Payments & Advances Recorded */}
-            <div className="p-5 rounded-2xl bg-zinc-900/40 border border-zinc-800 space-y-4">
+            <div className="p-5 rounded-2xl bg-[#FBF7ED] border border-[#E3DCCC] space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="font-serif font-bold text-sm text-zinc-100 flex items-center gap-2">
-                    <CreditCard className="w-4 h-4 text-emerald-400" />
+                  <h4 className="font-serif font-bold text-sm text-[#14291F] flex items-center gap-2">
+                    <CreditCard className="w-4 h-4 text-[#0E6049]" />
                     <span>Payments & Advances Ledger</span>
                   </h4>
-                  <p className="text-xs text-zinc-400">
-                    Total Paid: {formatCurrency(activeBooking.paidAmount)} | Balance Remaining: {formatCurrency(Math.max(0, Number(activeBooking.totalAmount) - Number(activeBooking.paidAmount)))}
+                  <p className="text-xs text-[#5E6C63] mt-0.5">
+                    <span className="font-semibold text-[#14291F]">Total Paid:</span> {formatCurrency(activeBooking.paidAmount)} | <span className="font-semibold text-[#14291F]">Balance Remaining:</span> {formatCurrency(Math.max(0, Number(activeBooking.totalAmount) - Number(activeBooking.paidAmount)))}
                   </p>
                 </div>
                 <button
                   onClick={() => setIsPaymentModalOpen(true)}
-                  className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center gap-1.5 transition"
+                  className="px-3.5 py-2 rounded-xl bg-[#0E6049] hover:bg-[#0B4D3B] text-white text-xs font-bold flex items-center gap-1.5 transition shadow-sm"
                 >
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>Record Payment</span>
+                </button>
+              </div>
                   <Plus className="w-3.5 h-3.5" />
                   <span>Record Payment</span>
                 </button>
