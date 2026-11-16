@@ -23,6 +23,8 @@ interface QuotationContextType {
   setDateRange: (start: string, end: string) => void;
   totalRentalAmount: number;
   totalItemCount: number;
+  isDrawerOpen: boolean;
+  setIsDrawerOpen: (open: boolean) => void;
 }
 
 const QuotationContext = createContext<QuotationContextType | undefined>(undefined);
@@ -31,6 +33,7 @@ export function QuotationProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<QuotationItem[]>([]);
   const [startDate, setStartDate] = useState<string>("");
   const [endDate, setEndDate] = useState<string>("");
+  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
 
   // Load from local storage
   useEffect(() => {
@@ -114,6 +117,8 @@ export function QuotationProvider({ children }: { children: React.ReactNode }) {
         setDateRange,
         totalRentalAmount,
         totalItemCount,
+        isDrawerOpen,
+        setIsDrawerOpen,
       }}
     >
       {children}

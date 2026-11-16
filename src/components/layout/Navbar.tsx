@@ -19,8 +19,7 @@ import {
 export function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const { totalItemCount } = useQuotation();
+  const { totalItemCount, isDrawerOpen, setIsDrawerOpen } = useQuotation();
   const { t, language } = useLanguage();
   const isSinhala = language === "si";
 
@@ -109,7 +108,7 @@ export function Navbar() {
 
             {/* Quotation Cart Button */}
             <button
-              onClick={() => setDrawerOpen(true)}
+              onClick={() => setIsDrawerOpen(true)}
               className="relative p-2.5 rounded-xl bg-white hover:bg-[#F1EBDD] text-[#14291F] border border-[#E3DCCC] hover:border-[#F4775D]/40 transition flex items-center gap-2 group"
               aria-label="View Quotation Request Cart"
             >
@@ -183,7 +182,7 @@ export function Navbar() {
       </header>
 
       {/* Slide-in Quotation Request Drawer */}
-      <QuotationDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
+      <QuotationDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
     </>
   );
 }

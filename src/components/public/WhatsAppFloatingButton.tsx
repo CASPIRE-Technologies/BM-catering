@@ -1,11 +1,21 @@
 "use client";
 
 import React from "react";
+import { usePathname } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
+import { useQuotation } from "@/lib/cart-context";
 
 export function WhatsAppFloatingButton() {
+  const pathname = usePathname();
   const { t } = useLanguage();
+  const { isDrawerOpen } = useQuotation();
+
+  // Hide WhatsApp floating button on admin portal or when quotation drawer/cart is open
+  if (pathname.startsWith("/admin") || isDrawerOpen) {
+    return null;
+  }
+
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP || "94771234567";
   const defaultMessage = encodeURIComponent(t.whatsapp.defaultMsg);
 
