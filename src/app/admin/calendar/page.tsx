@@ -223,50 +223,58 @@ export default function AdminCalendarPage() {
 
       {/* Selected Event Details Modal */}
       {selectedEvent && (
-        <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="w-full max-w-md bg-zinc-950 border border-zinc-800 rounded-2xl p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="w-full max-w-md bg-white border border-[#E3DCCC] rounded-2xl p-6 space-y-5 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-[#E3DCCC] pb-4">
               <div>
-                <span className="text-[10px] font-mono text-gold-400 uppercase tracking-widest font-bold">
+                <span className="text-[11px] font-mono text-[#0E6049] uppercase tracking-widest font-bold">
                   {selectedEvent.bookingNumber}
                 </span>
-                <h4 className="font-serif text-lg font-bold text-white mt-0.5">
+                <h4 className="font-serif text-xl font-bold text-[#14291F] mt-0.5">
                   {selectedEvent.eventType}
                 </h4>
               </div>
               <button
                 onClick={() => setSelectedEvent(null)}
-                className="text-zinc-400 hover:text-white"
+                className="w-8 h-8 rounded-full bg-[#F3ECE0] hover:bg-[#E8DFCE] text-[#14291F] flex items-center justify-center font-bold text-sm transition"
               >
                 ✕
               </button>
             </div>
 
-            <div className="space-y-3 text-xs">
+            <div className="space-y-4 text-xs">
               <div>
-                <span className="text-zinc-500 block">Customer</span>
-                <p className="font-semibold text-zinc-100">{selectedEvent.customer?.name} ({selectedEvent.customer?.phone})</p>
+                <span className="text-[#5E6C63] font-medium block">Customer</span>
+                <p className="font-bold text-[#14291F] text-sm mt-0.5">
+                  {selectedEvent.customer?.name} ({selectedEvent.customer?.phone})
+                </p>
               </div>
 
               <div>
-                <span className="text-zinc-500 block">Venue Location</span>
-                <p className="text-zinc-300">{selectedEvent.eventLocation}</p>
+                <span className="text-[#5E6C63] font-medium block">Venue Location</span>
+                <p className="text-[#14291F] font-semibold text-sm mt-0.5">
+                  {selectedEvent.eventLocation}
+                </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 p-3 rounded-xl bg-zinc-900 border border-zinc-800">
+              <div className="grid grid-cols-2 gap-3 p-3.5 rounded-xl bg-[#FBF7ED] border border-[#E3DCCC]">
                 <div>
-                  <span className="text-zinc-500 block">Dispatch / Setup</span>
-                  <p className="font-semibold text-zinc-200">{formatDate(selectedEvent.startDate)}</p>
+                  <span className="text-[#5E6C63] block font-medium">Dispatch / Setup</span>
+                  <p className="font-bold text-[#0E6049] text-xs mt-0.5">
+                    {formatDate(selectedEvent.startDate)}
+                  </p>
                 </div>
                 <div>
-                  <span className="text-zinc-500 block">Return / Dismantle</span>
-                  <p className="font-semibold text-zinc-200">{formatDate(selectedEvent.endDate)}</p>
+                  <span className="text-[#5E6C63] block font-medium">Return / Dismantle</span>
+                  <p className="font-bold text-[#0E6049] text-xs mt-0.5">
+                    {formatDate(selectedEvent.endDate)}
+                  </p>
                 </div>
               </div>
 
               <div>
-                <span className="text-zinc-500 block">Total Booking Value</span>
-                <p className="font-serif text-base font-bold text-gold-300">
+                <span className="text-[#5E6C63] font-medium block">Total Booking Value</span>
+                <p className="font-serif text-lg font-bold text-[#0E6049] mt-0.5">
                   {formatCurrency(selectedEvent.totalAmount)}
                 </p>
               </div>
@@ -275,7 +283,7 @@ export default function AdminCalendarPage() {
             <div className="pt-2 flex justify-end gap-2">
               <Link
                 href="/admin/bookings"
-                className="px-4 py-2 rounded-xl bg-gold-gradient text-zinc-950 font-bold text-xs uppercase tracking-wider"
+                className="w-full text-center px-5 py-3 rounded-xl bg-[#F4775D] hover:bg-[#E96750] text-white font-bold text-xs uppercase tracking-wider transition shadow-sm"
               >
                 Open in Bookings →
               </Link>

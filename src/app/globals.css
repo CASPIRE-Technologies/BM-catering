@@ -203,10 +203,38 @@ body {
   border-color: #E3DCCC !important;
 }
 
-/* Admin Dashboard theme overrides - ensure high-contrast readability against the warm linen background */
-.admin-shell {
-  background-color: #FBF7ED !important;
+/* Admin Modal & Popover Global Overrides */
+.admin-shell .fixed.inset-0 .bg-zinc-950,
+.admin-shell .fixed.inset-0 .bg-zinc-900,
+.admin-shell [role="dialog"] {
+  background-color: #FFFFFF !important;
   color: #14291F !important;
+  border-color: #E3DCCC !important;
+}
+
+.admin-shell .fixed.inset-0 .text-white,
+.admin-shell .fixed.inset-0 .text-zinc-100,
+.admin-shell .fixed.inset-0 .text-zinc-200 {
+  color: #14291F !important;
+}
+
+.admin-shell .fixed.inset-0 .text-zinc-400,
+.admin-shell .fixed.inset-0 .text-zinc-500 {
+  color: #5E6C63 !important;
+}
+
+.admin-shell .fixed.inset-0 .border-zinc-800 {
+  border-color: #E3DCCC !important;
+}
+
+.admin-shell .fixed.inset-0 .bg-zinc-900 {
+  background-color: #FBF7ED !important;
+}
+
+/* Ensure all admin subheadings, table summaries, and list views remain high contrast */
+.admin-shell p,
+.admin-shell span:not(.text-white):not([class*="bg-emerald"]):not([class*="bg-rose"]):not([class*="bg-amber"]) {
+  color: inherit;
 }
 
 .admin-shell h1,
